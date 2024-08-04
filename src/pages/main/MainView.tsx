@@ -3,9 +3,10 @@ import { BasicLayout } from "@components/organisms/layouts/BasicLayout/BasicLayo
 import { useBranchPaletteService } from "../../hooks/useBranchPaletteService";
 
 export const MainView = () => {
-	const BranchPaletteService = useBranchPaletteService({});
+	console.log("component loaded: MainView");
+	// const BranchPaletteService = useBranchPaletteService({});
 
-	console.log("BranchPaletteService in MainView", BranchPaletteService);
+	// console.log("BranchPaletteService in MainView", BranchPaletteService);
 
 	// const { obsidianFilesProvider, repo, currentBranchID } = useMainContext();
 

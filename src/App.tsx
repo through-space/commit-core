@@ -1,8 +1,8 @@
-import * as React from "react";
+import { FC } from "react";
 import { MainView } from "@pages/main/MainView";
 import GlobalStyle from "./styles/GlobalStyle";
 
-const App: React.FC = () => {
+const App: FC = () => {
 	console.log("App");
 	return (
 		<>
