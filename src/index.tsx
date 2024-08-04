@@ -1,9 +1,9 @@
-import * as React from "react";
-import App from "./App";
-import { createRoot } from "react-dom/client";
-
-createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-);
+// import * as React from "react";
+// import App from "./App";
+// import { createRoot } from "react-dom/client";
+//
+// createRoot(document.getElementById("root") as HTMLElement).render(
+//   <React.StrictMode>
+//     <App />
+//   </React.StrictMode>,
+// );

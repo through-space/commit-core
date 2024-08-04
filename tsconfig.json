@@ -1,44 +1,50 @@
 {
-  "compilerOptions": {
-    "baseUrl": "./src",
-    "paths": {
-      "@components/*": [
-        "components/*"
-      ],
-      "@data/*": [
-        "data/*"
-      ],
-      "@logic/*": [
-        "logic/*"
-      ],
-      "@services/*": [
-        "services/*"
-      ],
-      "@config/*": [
-        "config/*"
-      ]
-    },
-    "inlineSourceMap": true,
-    "inlineSources": true,
-    "module": "ESNext",
-    "target": "ES6",
-    "allowJs": true,
-    "noImplicitAny": true,
-    "moduleResolution": "node",
-    "importHelpers": true,
-    "isolatedModules": true,
-    "jsx": "react-jsx",
-    "strictNullChecks": true,
-    "lib": [
-      "DOM",
-      "ES5",
-      "ES6",
-      "ES7"
-    ]
-  },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "src"
-  ]
+	"compilerOptions": {
+		"baseUrl": "./src",
+		"paths": {
+			"@components/*": [
+				"components/*"
+			],
+			"@data/*": [
+				"data/*"
+			],
+			"@logic/*": [
+				"logic/*"
+			],
+			"@services/*": [
+				"services/*"
+			],
+			"@config/*": [
+				"config/*"
+			],
+			"@pages/*": [
+				"pages/*"
+			],
+			"@styles/*": [
+				"styles/*"
+			]
+		},
+		"inlineSourceMap": true,
+		"inlineSources": true,
+		"module": "ESNext",
+		"target": "ES6",
+		"allowJs": true,
+		"noImplicitAny": true,
+		"moduleResolution": "node",
+		"importHelpers": true,
+		"isolatedModules": true,
+		"jsx": "react-jsx",
+		"strictNullChecks": true,
+		"lib": [
+			"DOM",
+			"ES5",
+			"ES6",
+			"ES7"
+		]
+	},
+	"include": [
+		"**/*.ts",
+		"**/*.tsx",
+		"src"
+	]
 }
