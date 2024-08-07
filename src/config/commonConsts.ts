@@ -2,7 +2,8 @@ import { getCompletionRateByPercentage } from "@logic/entities/Branch/completion
 import { testBranchPaletteSet } from "@logic/entities/BranchPalette/palettes/branchPaletteSets";
 import { EBranchPalette } from "@logic/entities/BranchPalette/BranchPaletteInterfaces";
 
-export const commitKeyDateFormat = "YYYY-MM-DD";
+export const DEFAULT_DATE_FORMAT = "YYYY-MM-DD";
+export const TRANSPARENT_COLOR = "unset";
 export const DEFAULT_COMPLETION_RATE_METHOD = getCompletionRateByPercentage;
 export const DEFAULT_MAIN_BRANCH_ID = "master";
 export const DEFAULT_REPO_ID = "JsonTestRepo";

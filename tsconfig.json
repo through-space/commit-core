@@ -22,6 +22,9 @@
 			],
 			"@styles/*": [
 				"styles/*"
+			],
+			"@hooks/*": [
+				"hooks/*"
 			]
 		},
 		"inlineSourceMap": true,
@@ -40,7 +43,8 @@
 			"ES5",
 			"ES6",
 			"ES7"
-		]
+		],
+		"allowSyntheticDefaultImports": true
 	},
 	"include": [
 		"**/*.ts",

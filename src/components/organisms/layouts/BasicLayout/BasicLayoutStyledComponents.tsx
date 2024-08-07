@@ -5,18 +5,21 @@ export const BasicLayoutContentWrapper = styled.div`
 	flex-direction: column;
 	width: 100%;
 	background-color: #270022;
-	height: 100%
-`
+	height: 100%;
+`;
 
 export const BasicLayoutTopComponentWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
 	background-color: #dfd853;
-`
+	flex-grow: 1;
+`;
 
 export const BasicLayoutMiddleComponentWrapper = styled.div`
 	background-color: #d65d5d;
-	flex-grow: 1;
-`
+	flex-grow: 3;
+`;
 
 export const BasicLayoutBottomComponentWrapper = styled.div`
 	background-color: #278028;
-`
+`;
