@@ -1,11 +1,12 @@
 import dayjs from "dayjs";
 
-export interface ICalendarGridProps {
+export interface ICalendarGridDateProps {
 	startDate: dayjs.Dayjs;
 	endDate: dayjs.Dayjs;
 }
 
-export interface ICalendarGridChartProps {
-	startDate: dayjs.Dayjs;
-	endDate: dayjs.Dayjs;
-}
+export type ICalendarGridProps = ICalendarGridDateProps;
+
+export type ICalendarGridChartProps = ICalendarGridDateProps;
+
+export type ICalendarGridMonthsRowProps = ICalendarGridDateProps;

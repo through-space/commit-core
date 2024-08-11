@@ -11,30 +11,27 @@ export const CalendarGridChart: FC<ICalendarGridChartProps> = (props) => {
 	//TODO: what if number of days is less than 6 weeks
 	const numberOfDays = endDate.diff(startDate, "days") + 1;
 	console.log("numberOfDays", numberOfDays);
-	// const weekStart = 0;
-	// const numberOfWeeks = 6;
-	//
-	// const getStartDate = (): Dayjs => {
-	// 	return dayjs()
-	// 		.startOf("week")
-	// 		.add(weekStart, "day")
-	// 		.subtract(numberOfWeeks, "week");
-	// };
 
-	// const getNumberOfDays = () => {
-	// 	return numberOfWeeks * 7;
-	// };
-	//
 	const getDaySquares = (): ReactNode[] => {
 		const daySquares = [];
 		for (let i = 0; i < numberOfDays; i++) {
 			const date = dayjs(startDate).add(i, "day");
 			daySquares.push(
-				<DaySquare key={date.format(DEFAULT_DATE_FORMAT)} />,
+				<DaySquare
+					key={date.format(DEFAULT_DATE_FORMAT)}
+					date={date}
+				/>,
 			);
 		}
 
 		return daySquares;
+	};
+
+	const getNumOfWeeks = () => {
+		const numOfWeeks = Math.ceil(
+			Math.abs(endDate.diff(startDate, "days")) / 7,
+		);
+		return numOfWeeks + 1;
 	};
 	// 	const startDate = getStartDate();
 	// 	const numberOfDays = getNumberOfDays();
@@ -48,6 +45,8 @@ export const CalendarGridChart: FC<ICalendarGridChartProps> = (props) => {
 	// };
 
 	return (
-		<CalendarGridChartWrapper>{getDaySquares()}</CalendarGridChartWrapper>
+		<CalendarGridChartWrapper $columns={getNumOfWeeks()}>
+			{getDaySquares()}
+		</CalendarGridChartWrapper>
 	);
 };

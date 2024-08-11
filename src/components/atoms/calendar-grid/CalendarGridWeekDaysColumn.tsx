@@ -6,7 +6,6 @@ import weekday from "dayjs/plugin/weekday";
 
 export const CalendarGridWeekDaysColumn: FC = () => {
 	dayjs.extend(weekday);
-
 	const getWeekdays = (emptyOdd: boolean, emptyEven: boolean): string[] => {
 		const weekdays = [];
 		for (let i = 0; i < 7; i++) {

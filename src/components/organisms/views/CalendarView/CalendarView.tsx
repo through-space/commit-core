@@ -6,10 +6,16 @@ import {
 	CalendarViewWrapper,
 } from "@components/organisms/views/CalendarView/CalendarViewStyledComponents";
 import dayjs from "dayjs";
+import weekday from "dayjs/plugin/weekday";
 
 export const CalendarView: FC = () => {
+	dayjs.extend(weekday);
 	const endDay = dayjs();
-	const startDay = dayjs().subtract(1, "year");
+	let startDay = dayjs().subtract(1, "year");
+	const startWeekDay = startDay.weekday();
+
+	startDay = startDay.subtract(startWeekDay, "days");
+	//TODO: add option for month/week range
 
 	return (
 		<CalendarViewWrapper>

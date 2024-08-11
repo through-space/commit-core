@@ -2,7 +2,9 @@ import styled from "styled-components";
 
 export const WeekDayName = styled.div``;
 
-export const MonthName = styled.div``;
+export const MonthName = styled.div<{ $span?: number }>`
+	grid-column: ${(props) => (props.$span ? `span ${props.$span}` : "auto")};
+`;
 
 export const DaySquareWrapper = styled.div<{ color: string }>`
 	background-color: ${({ color }) => color};
