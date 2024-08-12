@@ -14,10 +14,10 @@ export interface IUseBranchPaletteServiceProps {
 // TODO: loads twice
 
 export const useBranchPaletteService = (
-	props: IUseBranchPaletteServiceProps,
+	props?: IUseBranchPaletteServiceProps,
 ) => {
 	console.log("useBranchPaletteService");
-	const { palettesSet = DEFAULT_PALETTE_SET } = props;
+	const { palettesSet = DEFAULT_PALETTE_SET } = props || {};
 
 	const [service, setService] =
 		useState<IBranchPaletteService>(BranchPaletteService);
