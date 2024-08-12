@@ -19,7 +19,6 @@ export const getMonthWeekNumMap = (
 	let date = startDate.clone();
 	while (date.isBefore(endDate)) {
 		const monthKey = getWeekMonthKey(date);
-		console.log(monthKey);
 		const monthWeeks = monthsWeeksMap.get(monthKey) || 0;
 		monthsWeeksMap.set(monthKey, monthWeeks + 1);
 

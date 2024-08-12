@@ -8,9 +8,7 @@ import { DEFAULT_DATE_FORMAT } from "@config/commonConsts";
 
 export const CalendarGridChart: FC<ICalendarGridChartProps> = (props) => {
 	const { startDate, endDate } = props;
-	//TODO: what if number of days is less than 6 weeks
 	const numberOfDays = endDate.diff(startDate, "days") + 1;
-	console.log("numberOfDays", numberOfDays);
 
 	const getDaySquares = (): ReactNode[] => {
 		const daySquares = [];
