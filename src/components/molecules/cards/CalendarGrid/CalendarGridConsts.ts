@@ -27,3 +27,8 @@ export const getMonthWeekNumMap = (
 
 	return monthsWeeksMap;
 };
+
+export const getNumOfWeeks = (startDate: dayjs.Dayjs, endDate: dayjs.Dayjs) => {
+	const numOfWeeks = Math.ceil(Math.abs(endDate.diff(startDate, "days")) / 7);
+	return numOfWeeks + 1;
+};

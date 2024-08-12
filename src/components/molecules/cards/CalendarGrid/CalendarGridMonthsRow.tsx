@@ -3,8 +3,10 @@ import { CalendarGridMonthsRowWrapper } from "@components/molecules/cards/Calend
 import { ICalendarGridDateProps } from "@components/molecules/cards/CalendarGrid/CalendarGridInterfaces";
 import dayjs from "dayjs";
 import { MonthName } from "@components/atoms/calendar-grid/CalendarGridStyledComponents";
-import weekday from "dayjs/plugin/weekday";
-import { getMonthWeekNumMap } from "@components/molecules/cards/CalendarGrid/CalendarGridConsts";
+import {
+	getMonthWeekNumMap,
+	getNumOfWeeks,
+} from "@components/molecules/cards/CalendarGrid/CalendarGridConsts";
 
 export const CalendarGridMonthsRow: FC<ICalendarGridDateProps> = (props) => {
 	const { startDate, endDate } = props;
@@ -26,7 +28,9 @@ export const CalendarGridMonthsRow: FC<ICalendarGridDateProps> = (props) => {
 	};
 
 	return (
-		<CalendarGridMonthsRowWrapper>
+		<CalendarGridMonthsRowWrapper
+			$columns={getNumOfWeeks(startDate, endDate)}
+		>
 			{getMonthsHeaders(startDate, endDate)}
 		</CalendarGridMonthsRowWrapper>
 	);
