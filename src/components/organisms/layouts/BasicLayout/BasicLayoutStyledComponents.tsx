@@ -11,12 +11,11 @@ export const BasicLayoutContentWrapper = styled.div`
 export const BasicLayoutTopComponentWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
-	background-color: #dfd853;
-	flex-grow: 1;
+	background-color: #dcd691;
 `;
 
 export const BasicLayoutMiddleComponentWrapper = styled.div`
-	background-color: #d65d5d;
+	background-color: #f69f9f;
 	flex-grow: 3;
 `;
 
