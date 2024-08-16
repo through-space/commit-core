@@ -1,6 +1,5 @@
-import {IRepo} from "@logic/entities/Repo/Repo";
-import {TBranchID} from "@logic/entities/Branch/BranchInterfaces";
-import {IBranch} from "@logic/entities/Branch/Branch";
+import { IRepo } from "@logic/entities/Repo/RepoInterfaces";
+import { IBranch, TBranchID } from "@logic/entities/Branch/BranchInterfaces";
 
 export function getBranch(this: IRepo, branchID: TBranchID): IBranch | null {
 	return this.branches[branchID] || null;

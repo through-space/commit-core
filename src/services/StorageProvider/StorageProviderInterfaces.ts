@@ -1,14 +1,15 @@
-import {IRepo, TRepoID} from "@logic/entities/Repo/Repo";
+import { IRepo, TRepoID } from "@logic/entities/Repo/RepoInterfaces";
 
 export enum EStorageProviderType {
 	JSON = "JSON",
 	MOCKUP = "MOCKUP",
-	OBSIDIAN = "OBSIDIAN"
+	OBSIDIAN = "OBSIDIAN",
+	LOCAL_STORAGE = "LOCAL_STORAGE",
 }
 
 export interface IStorageProviderProps {
 	type: EStorageProviderType;
-	getRepo: (repoID: TRepoID) => Promise<IRepo>
+	getRepo: (repoID: TRepoID) => Promise<IRepo>;
 }
 
 // export interface IJsonStorageProviderProps extends IStorageProviderProps {
@@ -19,17 +20,17 @@ export interface IStorageProviderProps {
 // 	repo: IRepo;
 // }
 
-export type IObsidianStorageProviderProps = IStorageProviderProps
-
+export type IObsidianStorageProviderProps = IStorageProviderProps;
 
 export interface IStorageProviderConfig {
 	type: EStorageProviderType;
 }
 
 export interface IStorageProvider {
-	getRepo: (repoID: TRepoID) => Promise<IRepo>
+	getRepo: (repoID: TRepoID) => Promise<IRepo>;
+	saveRepo: (repo: IRepo) => Promise<void>;
 }
 
 export interface IStorageProviderFactory {
-	getStorageProvider: (config: IStorageProviderConfig) => IStorageProvider
+	getStorageProvider: (config: IStorageProviderConfig) => IStorageProvider;
 }

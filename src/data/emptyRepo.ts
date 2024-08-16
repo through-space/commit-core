@@ -2,7 +2,7 @@ import {
 	DEFAULT_BRANCH_PALETTE_ID,
 	DEFAULT_MAIN_BRANCH_ID,
 } from "@config/commonConsts";
-import { IRepo } from "@logic/entities/Repo/Repo";
+import { IRepo } from "@logic/entities/Repo/RepoInterfaces";
 import { CompletionScoreCalculationMethodProvider } from "@logic/entities/Branch/completion-methods/CompletionScoreCalculationMethodProvider";
 import { ECompletionScoreCalculationMethod } from "@logic/entities/Branch/completion-methods/CompletionScoreCalculationMethodTypes";
 import {
