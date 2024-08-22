@@ -4,7 +4,7 @@ import {
 	ILogicEntityBuilder,
 	ILogicEntityBuilderProps,
 } from "@logic/common/LogicEntityInterfaces";
-import { IRepo, TConnectionsMap } from "@logic/entities/Repo/RepoInterfaces";
+import { IRepo } from "@logic/entities/Repo/RepoInterfaces";
 
 export type TCommitID = string;
 
@@ -14,7 +14,7 @@ export interface ICommit {
 	timestamp: dayjs.Dayjs;
 	value: number;
 	sourceBranchID: TBranchID;
-	getSourceBranch: () => IBranch;
+	getSourceBranch?: () => IBranch | undefined;
 }
 
 export interface ICommitRawObject {
@@ -25,7 +25,7 @@ export interface ICommitRawObject {
 	sourceBranchID: TBranchID;
 }
 
-export interface ICommitBuilder {
+export interface ICommitBuilder extends ILogicEntityBuilder {
 	getEntityFromObject: (props: ICommitBuilderProps) => ICommit;
 }
 
