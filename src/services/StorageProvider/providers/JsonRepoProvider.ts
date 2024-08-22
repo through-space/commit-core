@@ -1,4 +1,4 @@
-import { emptyRepo } from "@data/emptyRepo";
+import { emptyRepo } from "@data/templates/emptyRepo";
 import { IRepo, TRepoID } from "@logic/entities/Repo/RepoInterfaces";
 import { IStorageProvider } from "@services/StorageProvider/StorageProviderInterfaces";
 import { repoExampleJson } from "@data/repoExampleJson";

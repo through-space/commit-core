@@ -5,5 +5,5 @@ export interface IScoreEntry {
 	max: number;
 	commitID: TCommitID;
 
-	getCommit: () => ICommit;
+	// getCommit: () => ICommit;
 }

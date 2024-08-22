@@ -1,8 +1,13 @@
 import * as dayjs from "dayjs";
 import { EBranchPalette } from "@logic/entities/BranchPalette/BranchPaletteInterfaces";
-import { TCommitID } from "@logic/entities/Commit/CommitInterfaces";
-import { IBranchConnection } from "@logic/entities/Connection/ConnectionInterfaces";
-import { ILogicEntity } from "@logic/common/LogicEntityInterfaces";
+import { TBranchConnectionID } from "@logic/entities/Connection/ConnectionInterfaces";
+import {
+	ILogicEntity,
+	ILogicEntityBuilder,
+	ILogicEntityBuilderProps,
+	IRawObject,
+} from "@logic/common/LogicEntityInterfaces";
+import { IRepo } from "@logic/entities/Repo/RepoInterfaces";
 
 export type TBranchID = string;
 
@@ -27,20 +32,28 @@ export interface IDoCommitProps {
 //TODO: ICommit should hold current values of the branch
 
 export interface IBranch extends ILogicEntity {
+	raw: IBranchRawObject;
 	id: TBranchID;
 	name: string;
-	palette: EBranchPalette;
+
+	// getParents: () => IBranch[];
+	getChildren: () => IBranch[];
+
+	// getAllConnections: () => IBranchConnection[];
+	// getChildren: () => IBranch[];
+	// paletteType: EBranchPalette;
+	// connections: IBranchConnection[];
+
 	// commits: {
 	// 	[date: string]: TCommitID[];
 	// };
-	connections: IBranchConnection[];
 
 	/**
 	 * How much value is passed to parent
 	 */
-	contributionValue: number;
-	getConnections: () => IBranchConnection[];
-	getCompletionScore: IBranchCompletionScoreCalculationMethod;
+	// contributionValue: number;
+	// getConnections: () => IBranchConnection[];
+	// getCompletionScore: IBranchCompletionScoreCalculationMethod;
 
 	// doCommit: IDoCommit;
 
@@ -70,12 +83,23 @@ export interface IBranch extends ILogicEntity {
 	// branchSchedules: IBranchSchedule[];
 }
 
-export interface IBranchRawObject {
+export interface IBranchRawObject extends IRawObject {
 	id: TBranchID;
 	name: string;
-	palette: EBranchPalette;
-	connections: IBranchConnection[];
-	commits: {
-		[date: string]: TCommitID[];
-	};
+	palette?: EBranchPalette;
+	contributionValue?: number;
+
+	connectionIDs?: TBranchConnectionID[];
+	// commits: {
+	// 	[date: string]: TCommitID[];
+	// };
+}
+
+export interface IBranchBuilderProps extends ILogicEntityBuilderProps {
+	rawObject: IBranchRawObject;
+	repo: IRepo;
+}
+
+export interface IBranchBuilder extends ILogicEntityBuilder {
+	getFromObject: (props: IBranchBuilderProps) => IBranch;
 }

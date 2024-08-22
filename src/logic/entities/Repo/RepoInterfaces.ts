@@ -3,43 +3,44 @@ import {
 	IBranchRawObject,
 	TBranchID,
 } from "../Branch/BranchInterfaces";
-import { IRawBranchObject } from "@services/StorageProvider/common/buildBranch";
 import {
 	IBranchConnection,
 	IBranchConnectionRawObject,
 	TBranchConnectionID,
 } from "@logic/entities/Connection/ConnectionInterfaces";
-import {
-	ICommit,
-	ICommitRawObject,
-	TCommitID,
-} from "@logic/entities/Commit/CommitInterfaces";
-import {
-	ILogicEntity,
-	ILogicEntityBuilder,
-	ILogicEntityBuilderProps,
-} from "@logic/common/LogicEntityInterfaces";
+import { ICommitRawObject } from "@logic/entities/Commit/CommitInterfaces";
+import { ILogicEntity } from "@logic/common/LogicEntityInterfaces";
 
 export type TRepoID = string;
 
-export type TBranchesMap = Map<TBranchID, IBranch>;
-export type TCommitsMap = Map<TCommitID, ICommit>;
-export type TConnectionsMap = Map<TBranchConnectionID, IBranchConnection>;
-
-export type TEntityMap = TBranchesMap | TCommitsMap | TConnectionsMap;
-
 export interface IRepo extends ILogicEntity {
 	id: TRepoID;
-	branches: TBranchesMap;
-	commits: TCommitsMap;
-	connections: TConnectionsMap;
-	mainBranchID: TBranchID;
+	// branches: TBranchesMap;
+	raw: IRepoRawObject;
 
-	getBranchByID: (branchID: TBranchID) => IBranch;
-	getConnectionByID: (connectionID: TBranchConnectionID) => IBranchConnection;
-	getCommitByID: (commitID: TCommitID) => ICommit;
+	// getConnectionByID: (
+	// 	connectionID: TBranchConnectionID,
+	// ) => IBranchConnection | undefined;
+	getBranchByID: (branchID: TBranchID) => IBranch | undefined;
+	getConnectionByID: (
+		connectionID: TBranchConnectionID,
+	) => IBranchConnection | undefined;
+	// commits: TCommitsMap;
+	// connections: TConnectionsMap;
+	//
+	mainBranchID?: TBranchID;
+	// mainBranch: IBranch;
 
-	createBranchID: () => TBranchID;
+	// getConnectionByID: (
+	// 	connectionID: TBranchConnectionID,
+	// ) => IBranchConnection | undefined;
+	// getCommitByID: (commitID: TCommitID) => ICommit | undefined;
+	//
+	// setBranch: (branch: IBranch) => void;
+	// setConnection: (connection: IBranchConnection) => void;
+	// setCommit: (commit: ICommit) => void;
+
+	// createBranchID: () => TBranchID;
 }
 
 export interface IRepoRawObject {
@@ -47,7 +48,7 @@ export interface IRepoRawObject {
 	branches: IBranchRawObject[];
 	connections: IBranchConnectionRawObject[];
 	commits: ICommitRawObject[];
-	mainBranchID: string;
+	mainBranchID?: TBranchID;
 }
 
 export interface IRepoBuilderProps {
@@ -55,5 +56,6 @@ export interface IRepoBuilderProps {
 }
 
 export interface IRepoBuilder {
-	getEntityFromObject: (props: IRepoBuilderProps) => IRepo;
+	getFromRawObject: (props: IRepoBuilderProps) => IRepo;
+	dumpToRawObject?: (repo: IRepo) => IRepoRawObject;
 }
