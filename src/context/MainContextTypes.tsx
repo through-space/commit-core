@@ -8,6 +8,6 @@ export interface IMainContextProps {
 export interface IMainContext {
 	// obsidianApp?: App;
 	// obsidianFilesProvider?: IObsidianFilesProvider;
-	currentBranchID?: TBranchID;
-	repo?: IRepo | null;
+	currentBranchID: TBranchID | null;
+	repo: IRepo | null;
 }

@@ -5,7 +5,7 @@ import {
 } from "@logic/entities/Connection/ConnectionInterfaces";
 
 export const repoExampleObj: IRepoRawObject = {
-	id: "JsonTestRepo",
+	id: "repoExampleObj_1",
 	mainBranchID: "branchID_1",
 	branches: [
 		{
@@ -41,4 +41,5 @@ export const repoExampleObj: IRepoRawObject = {
 			],
 		},
 	],
+	commits: [],
 };

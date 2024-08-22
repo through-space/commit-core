@@ -1,5 +1,5 @@
-import {EStorageProviderType} from "@services/StorageProvider/StorageProviderInterfaces";
+import { EStorageProviderType } from "@services/StorageProvider/StorageProviderInterfaces";
 
 export const activeStorageProviders: EStorageProviderType[] = [
-	EStorageProviderType.JSON
-]
+	EStorageProviderType.LOCAL_STORAGE,
+];

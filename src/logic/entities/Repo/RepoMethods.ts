@@ -13,6 +13,7 @@ import {
 import { emptyRepo } from "@data/templates/emptyRepo";
 import { BranchBuilder } from "@logic/entities/Branch/BranchConsts";
 import { ConnectionBuilder } from "@logic/entities/Connection/ConnnectionBuilderConsts";
+import { repoExampleObj } from "@data/repoExampleObj";
 
 export const getRepoFromObject = (props: IRepoBuilderProps): IRepo => {
 	const { rawObject } = props;
@@ -41,13 +42,17 @@ export const getRepoFromObject = (props: IRepoBuilderProps): IRepo => {
 			repo,
 		});
 
+	const dumpToRawObject = () => {
+		return repoExampleObj;
+	};
+
 	repo = {
 		id: rawObject.id,
 		mainBranchID: rawObject?.mainBranchID,
 		raw: rawObject,
 		getBranchByID,
-
 		getConnectionByID,
+		dumpToRawObject,
 	};
 
 	return repo;
