@@ -12,4 +12,5 @@ export const emptyRepo: IRepo = {
 	raw: emptyRawRepo,
 	getBranchByID: () => undefined,
 	getConnectionByID: () => undefined,
+	dumpToRawObject: () => emptyRawRepo,
 };

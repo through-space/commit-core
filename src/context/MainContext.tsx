@@ -5,8 +5,14 @@ import { IRepo } from "@logic/entities/Repo/RepoInterfaces";
 import { StorageProviderFactory } from "@services/StorageProvider/StorageProviderFactory";
 import { activeStorageProviders } from "@config/storageConfig";
 import { IStorageProviderConfig } from "@services/StorageProvider/StorageProviderInterfaces";
+import { RepoBuilder } from "@logic/entities/Repo/RepoConsts";
+import { TBranchID } from "@logic/entities/Branch/BranchInterfaces";
+import { repoExampleObj } from "@data/repoExampleObj";
 
-const MainContext = createContext<IMainContext>({});
+const MainContext = createContext<IMainContext>({
+	repo: null,
+	currentBranchID: DEFAULT_MAIN_BRANCH_ID,
+});
 
 export const useMainContext = (): IMainContext => {
 	return useContext(MainContext);
@@ -14,6 +20,7 @@ export const useMainContext = (): IMainContext => {
 
 export const MainContextProvider: FC<IMainContextProps> = ({ children }) => {
 	const [repo, setRepo] = useState<IRepo | null>(null);
+	const [mainBranchID, setMainBranchID] = useState<TBranchID | null>(null);
 
 	const fetchRepo = async () => {
 		//TODO: add error handling
@@ -24,7 +31,14 @@ export const MainContextProvider: FC<IMainContextProps> = ({ children }) => {
 			StorageProviderFactory.getStorageProvider(storageConfig);
 
 		const repo = await storageProvider.getRepo(DEFAULT_REPO_ID);
-		setRepo(repo);
+
+		if (repo) {
+			const loadedRepo = RepoBuilder.getFromRawObject({
+				rawObject: repo,
+			});
+			setRepo(loadedRepo);
+			setMainBranchID(loadedRepo.mainBranchID ?? null);
+		}
 	};
 
 	useEffect(() => {
@@ -33,7 +47,7 @@ export const MainContextProvider: FC<IMainContextProps> = ({ children }) => {
 
 	const context = {
 		repo,
-		currentBranchID: repo ? repo.mainBranchID : DEFAULT_MAIN_BRANCH_ID,
+		currentBranchID: mainBranchID,
 	};
 
 	return (

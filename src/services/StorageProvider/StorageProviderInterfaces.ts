@@ -1,4 +1,8 @@
-import { IRepo, TRepoID } from "@logic/entities/Repo/RepoInterfaces";
+import {
+	IRepo,
+	IRepoRawObject,
+	TRepoID,
+} from "@logic/entities/Repo/RepoInterfaces";
 
 export enum EStorageProviderType {
 	JSON = "JSON",
@@ -27,7 +31,7 @@ export interface IStorageProviderConfig {
 }
 
 export interface IStorageProvider {
-	getRepo: (repoID: TRepoID) => Promise<IRepo>;
+	getRepo: (repoID: TRepoID) => Promise<IRepoRawObject>;
 	saveRepo: (repo: IRepo) => Promise<void>;
 }
 
