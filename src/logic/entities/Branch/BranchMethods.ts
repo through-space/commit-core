@@ -14,6 +14,7 @@ export const createBranchID = (): TBranchID => {
 
 export const getBranchFromObject = (props: IBranchBuilderProps): IBranch => {
 	const { rawObject, repo } = props;
+	const { name, id } = rawObject;
 	let _connections: IBranchConnection[] | null = null;
 
 	const _getAllConnections = () => {
@@ -39,10 +40,22 @@ export const getBranchFromObject = (props: IBranchBuilderProps): IBranch => {
 		}, []);
 	};
 
+	const dumpToRawObject = () => {
+		const connectionIDs = _getAllConnections().map(
+			(connection) => connection.id,
+		);
+		return {
+			id,
+			name,
+			connectionIDs,
+		};
+	};
+
 	return {
 		raw: rawObject,
-		id: rawObject.id,
-		name: rawObject.name,
+		id,
+		name,
 		getChildren,
+		dumpToRawObject,
 	};
 };

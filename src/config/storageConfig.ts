@@ -2,4 +2,5 @@ import { EStorageProviderType } from "@services/StorageProvider/StorageProviderI
 
 export const activeStorageProviders: EStorageProviderType[] = [
 	EStorageProviderType.LOCAL_STORAGE,
+	// EStorageProviderType.MOCKUP,
 ];

@@ -10,4 +10,5 @@ export interface IMainContext {
 	// obsidianFilesProvider?: IObsidianFilesProvider;
 	currentBranchID: TBranchID | null;
 	repo: IRepo | null;
+	updateRepo: (repo: IRepo) => void;
 }

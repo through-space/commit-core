@@ -8,7 +8,6 @@ import {
 	TLogicEntityID,
 	TLogicEntityRawObject,
 } from "@logic/common/LogicEntityInterfaces";
-import { BranchBuilder } from "@logic/entities/Branch/BranchConsts";
 
 const initRawObject = (props: IInitRawObjectProps): TLogicEntity => {
 	const { rawObject, builder, repo } = props;
@@ -28,7 +27,7 @@ export const buildObjectsMap = <
 	const { rawObjects, builder, repo } = props;
 
 	return new Map(
-		rawObjects.map((rawObject) => {
+		(rawObjects ?? []).map((rawObject) => {
 			const entity = initRawObject({
 				rawObject,
 				builder,
@@ -38,22 +37,6 @@ export const buildObjectsMap = <
 		}),
 	);
 };
-//
-// export const getEntityByID = (
-// 	props: IGetEntityByIDProps,
-// ): ILogicEntity | undefined => {
-// 	const { entityMap, id } = props;
-//
-// 	const entity = entityMap.get(id);
-// 	if (!entity) {
-// 		throw new Error(`Entity with ID ${id} not found`);
-// 	}
-// 	return entity;
-// };
-
-// export const getAllEntities = <ENTITY extends TLogicEntity>(
-// 	props: IBuildObjectsMapProps,
-// ): TGeneralEntityMap<TLogicEntityID, ENTITY> =>
 
 export const getAllRepoEntities = <
 	T_ENTITY_ID extends TLogicEntityID,
@@ -62,18 +45,16 @@ export const getAllRepoEntities = <
 >(
 	props: IGetAllRepoEntitiesProps<T_ENTITY_ID, T_ENTITY, T_RAW_ENTITY>,
 ): TGeneralEntityMap<T_ENTITY_ID, T_ENTITY> => {
-	let entitiesMap = props.entitiesMap;
+	if (props.entitiesMap !== null) {
+		return props.entitiesMap;
+	}
 	const { rawEntities, repo, entityBuilder } = props;
 
-	if (entitiesMap === null) {
-		entitiesMap = buildObjectsMap<T_ENTITY_ID, T_ENTITY>({
-			rawObjects: rawEntities,
-			builder: entityBuilder,
-			repo,
-		});
-	}
-
-	return entitiesMap;
+	return buildObjectsMap<T_ENTITY_ID, T_ENTITY>({
+		rawObjects: rawEntities,
+		builder: entityBuilder,
+		repo,
+	});
 };
 
 export const getRepoEntityByID = <

@@ -25,6 +25,6 @@ export const DEFAULT_DATE_FORMAT = "YYYY-MM-DD";
 export const TRANSPARENT_COLOR = "unset";
 export const DEFAULT_COMPLETION_RATE_METHOD = getCompletionRateByPercentage;
 export const DEFAULT_MAIN_BRANCH_ID = "master";
-export const DEFAULT_REPO_ID = "JsonTestRepo";
+export const DEFAULT_REPO_ID = "repoExampleObj_1";
 export const DEFAULT_BRANCH_PALETTE_ID = EBranchPalette.GREEN;
 export const DEFAULT_PALETTE_SET = testBranchPaletteSet;
