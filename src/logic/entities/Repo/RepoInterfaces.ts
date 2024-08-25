@@ -41,6 +41,8 @@ export interface IRepo extends ILogicEntity {
 	// setCommit: (commit: ICommit) => void;
 
 	// createBranchID: () => TBranchID;
+
+	setMainBranchID: (branchID: TBranchID) => void;
 	dumpToRawObject: () => IRepoRawObject;
 }
 

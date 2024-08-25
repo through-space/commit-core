@@ -1,5 +1,5 @@
 import { IStorageProvider } from "@services/StorageProvider/StorageProviderInterfaces";
-import { emptyRepo } from "@data/templates/emptyRepo";
+import { emptyRawRepo } from "@data/templates/emptyRepo";
 
 export const getLocalStorageKey = (repoID: string) => `repo_${repoID}`;
 
@@ -8,7 +8,7 @@ export const LocalStorageProvider: IStorageProvider = {
 		const localStorageKey = getLocalStorageKey(repoID);
 		const json = localStorage.getItem(localStorageKey);
 		if (!json) {
-			return emptyRepo;
+			return emptyRawRepo;
 		}
 
 		return JSON.parse(json);

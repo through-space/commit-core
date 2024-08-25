@@ -13,4 +13,6 @@ export const emptyRepo: IRepo = {
 	getBranchByID: () => undefined,
 	getConnectionByID: () => undefined,
 	dumpToRawObject: () => emptyRawRepo,
+
+	setMainBranchID: () => {},
 };

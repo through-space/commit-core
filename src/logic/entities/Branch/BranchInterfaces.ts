@@ -39,6 +39,8 @@ export interface IBranch extends ILogicEntity {
 	// getParents: () => IBranch[];
 	getChildren: () => IBranch[];
 
+	dumpToRawObject: () => IBranchRawObject;
+
 	// getAllConnections: () => IBranchConnection[];
 	// getChildren: () => IBranch[];
 	// paletteType: EBranchPalette;
