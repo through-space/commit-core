@@ -17,10 +17,10 @@ export const MainView = () => {
 	console.log("branch", repo.getBranchByID("branchID_1"));
 	console.log("children", repo.getBranchByID("branchID_1")?.getChildren());
 
-	setTimeout(() => {
-		repo.setMainBranchID("branchID_1");
-		updateRepo(repo);
-	}, 5000);
+	// setTimeout(() => {
+	// 	repo.setMainBranchID("branchID_1");
+	// 	updateRepo(repo);
+	// }, 5000);
 	//
 	// const storage = StorageProviderFactory.getStorageProvider({
 	// 	type: EStorageProviderType.LOCAL_STORAGE,

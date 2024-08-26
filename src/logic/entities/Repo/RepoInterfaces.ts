@@ -28,7 +28,10 @@ export interface IRepo extends ILogicEntity {
 	// commits: TCommitsMap;
 	// connections: TConnectionsMap;
 	//
-	mainBranchID?: TBranchID;
+	mainBranchID: TBranchID;
+
+	saveBranch: (branch: IBranch) => void;
+	saveConnection: (connection: IBranchConnection) => void;
 	// mainBranch: IBranch;
 
 	// getConnectionByID: (

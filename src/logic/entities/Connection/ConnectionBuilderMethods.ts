@@ -4,7 +4,18 @@ import {
 	IBranchConnectionBuilderProps,
 	IBranchConnectionMember,
 	IBranchConnectionRawObject,
+	TBranchConnectionID,
 } from "@logic/entities/Connection/ConnectionInterfaces";
+import dayjs from "dayjs";
+
+export const createConnectionID = (): TBranchConnectionID => {
+	return (
+		"connectionID_" +
+		Math.ceil(Math.random() * 1000000) +
+		"_" +
+		dayjs().unix()
+	);
+};
 
 export const getBranchConnectionFromObject = (
 	props: IBranchConnectionBuilderProps,

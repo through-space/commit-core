@@ -7,9 +7,12 @@ import {
 	EBranchConnectionMemberRole,
 	IBranchConnection,
 } from "@logic/entities/Connection/ConnectionInterfaces";
+import dayjs from "dayjs";
 
 export const createBranchID = (): TBranchID => {
-	return "branchID_" + Math.ceil(Math.random() * 1000000);
+	return (
+		"branchID_" + Math.ceil(Math.random() * 1000000) + "_" + dayjs().unix()
+	);
 };
 
 export const getBranchFromObject = (props: IBranchBuilderProps): IBranch => {
@@ -51,10 +54,19 @@ export const getBranchFromObject = (props: IBranchBuilderProps): IBranch => {
 		};
 	};
 
+	const addConnection = (connection: IBranchConnection) => {
+		_connections = [..._getAllConnections(), connection];
+
+		rawObject.connectionIDs = _connections.map(
+			(connection) => connection.id,
+		);
+	};
+
 	return {
 		raw: rawObject,
 		id,
 		name,
+		addConnection,
 		getChildren,
 		dumpToRawObject,
 	};

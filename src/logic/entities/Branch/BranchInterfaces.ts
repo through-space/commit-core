@@ -1,6 +1,9 @@
 import * as dayjs from "dayjs";
 import { EBranchPalette } from "@logic/entities/BranchPalette/BranchPaletteInterfaces";
-import { TBranchConnectionID } from "@logic/entities/Connection/ConnectionInterfaces";
+import {
+	IBranchConnection,
+	TBranchConnectionID,
+} from "@logic/entities/Connection/ConnectionInterfaces";
 import {
 	ILogicEntity,
 	ILogicEntityBuilder,
@@ -37,6 +40,8 @@ export interface IBranch extends ILogicEntity {
 	name: string;
 
 	// getParents: () => IBranch[];
+	addConnection: (connection: IBranchConnection) => void;
+
 	getChildren: () => IBranch[];
 
 	dumpToRawObject: () => IBranchRawObject;
@@ -104,4 +109,5 @@ export interface IBranchBuilderProps extends ILogicEntityBuilderProps {
 
 export interface IBranchBuilder extends ILogicEntityBuilder {
 	getFromObject: (props: IBranchBuilderProps) => IBranch;
+	getEmptyBranch: (repo: IRepo) => IBranch;
 }

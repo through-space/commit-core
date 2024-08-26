@@ -1,26 +1,27 @@
 import { useMainContext } from "@context/MainContext";
 import { useEffect, useState } from "react";
 import { EmptyPage } from "@pages/common/EmptyPage";
-import { BranchBoxWrapper } from "@components/molecules/cards/BranchBox/BranchBoxStyledComponents";
 import { ChildrenViewWrapper } from "@components/organisms/views/ChildrenView/ChildrenViewStyledComponents";
 import { BranchBox } from "@components/molecules/cards/BranchBox/BranchBox";
+import { IBranch } from "@logic/entities/Branch/BranchInterfaces";
+import { useCurrentBranch } from "@hooks/useCurrentBranch";
 
 export const ChildrenView = () => {
-	const { currentBranchID, repo } = useMainContext();
-
-	if (!currentBranchID) {
-		return <EmptyPage />;
-	}
-
-	const branch = repo?.getBranchByID(currentBranchID);
-
-	const [children, setChildren] = useState(branch?.getChildren() ?? []);
+	const { repo } = useMainContext();
+	const [children, setChildren] = useState<IBranch[]>([]);
+	const branch = useCurrentBranch();
 
 	useEffect(() => {
-		if (branch) {
-			setChildren(branch.getChildren());
+		if (!branch) {
+			return;
 		}
-	}, [currentBranchID]);
+
+		setChildren(branch.getChildren());
+	}, [repo, branch]);
+
+	if (!branch) {
+		return <EmptyPage />;
+	}
 
 	const childrenBoxes = children.map((branch) => {
 		return <BranchBox key={`branch_${branch.id}`} branch={branch} />;

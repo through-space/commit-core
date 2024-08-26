@@ -6,6 +6,6 @@ export interface IStorageConfig {
 }
 
 export const activeStorageProviders: IStorageConfig = {
-	read: EStorageProviderType.MOCKUP,
+	read: EStorageProviderType.LOCAL_STORAGE,
 	write: EStorageProviderType.LOCAL_STORAGE,
 };
