@@ -33,7 +33,6 @@ export const CalendarView: FC = () => {
 			<CalendarViewTopComponentWrapper>
 				<div>
 					<HomeButton />
-					<AddChildBranchButton sourceBranch={branch} />
 				</div>
 				<div>{branch.name}</div>
 			</CalendarViewTopComponentWrapper>

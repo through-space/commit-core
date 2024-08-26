@@ -36,6 +36,7 @@ export const getBranchFromObject = (props: IBranchBuilderProps): IBranch => {
 		return _getAllConnections().reduce((acc: IBranch[], connection) => {
 			connection
 				.getBranchesByRole(EBranchConnectionMemberRole.CHILD)
+				.filter((branch) => branch.id !== id)
 				.map((branch) => {
 					acc.push(branch);
 				});
