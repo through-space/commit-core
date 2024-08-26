@@ -18,7 +18,7 @@ export const MainView = () => {
 	console.log("children", repo.getBranchByID("branchID_1")?.getChildren());
 
 	setTimeout(() => {
-		repo.setMainBranchID("branchID_2");
+		repo.setMainBranchID("branchID_1");
 		updateRepo(repo);
 	}, 5000);
 	//

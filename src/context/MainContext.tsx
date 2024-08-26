@@ -10,6 +10,7 @@ import {
 import { RepoBuilder } from "@logic/entities/Repo/RepoConsts";
 import { TBranchID } from "@logic/entities/Branch/BranchInterfaces";
 import { useStorage } from "@hooks/useStorage";
+import { activeStorageProviders } from "@config/storageConfig";
 
 const MainContext = createContext<IMainContext>({
 	repo: null,
@@ -25,13 +26,7 @@ export const MainContextProvider: FC<IMainContextProps> = ({ children }) => {
 	const [repo, setRepo] = useState<IRepo | null>(null);
 	const [mainBranchID, setMainBranchID] = useState<TBranchID | null>(null);
 
-	const storageConfig: IStorageProviderConfig = {
-		// type: EStorageProviderType.MOCKUP,
-		type: EStorageProviderType.LOCAL_STORAGE,
-		// type: activeStorageProviders[0],
-	};
-	const storageProvider =
-		StorageProviderFactory.getStorageProvider(storageConfig);
+	const storageProvider = useStorage();
 
 	const fetchRepo = async () => {
 		//TODO: add error handling
