@@ -18,7 +18,7 @@ export const DaySquare: FC<IDaySquareProps> = (props) => {
 	// const { getPaletteByName, getColorByScore } = useBranchPaletteService();
 	//
 	const getSquaredColor = (score: number): TColor => {
-		return "red";
+		return "";
 		// 	const palette = getPaletteByName(EBranchPalette.GREEN);
 		// 	const color = palette
 		// 		? getColorByScore(palette, score)

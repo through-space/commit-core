@@ -1,4 +1,7 @@
-import { EBranchPalette, TBranchPalettesMap } from "../BranchPaletteInterfaces";
+import {
+	EBranchPalette,
+	TBranchPalettesMap,
+} from "@logic/entities/BranchPalette/BranchPaletteInterfaces";
 import { createPalette } from "@logic/entities/BranchPalette/methods/constructors";
 
 console.log("fullBranchPalettesMap.ts");
@@ -7,11 +10,11 @@ export const fullBranchPalettesMap: TBranchPalettesMap = new Map([
 	[
 		EBranchPalette.RED,
 		createPalette(EBranchPalette.RED, "red", [
-			"#330000",
-			"#660000",
-			"#990000",
-			"#CC0000",
-			"#FF0000",
+			// "#330000",
+			// "#660000",
+			// "#990000",
+			// "#CC0000",
+			// "#FF0000",
 		]),
 	],
 	[
