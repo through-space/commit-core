@@ -13,7 +13,7 @@ import {
 	TBranchPalettesMap,
 	TColor,
 } from "@logic/entities/BranchPalette/BranchPaletteInterfaces";
-import { fullBranchPalettesMap } from "@logic/entities/BranchPalette/palettes/fullBranchPalettesMap";
+import { fullBranchPalettesMap } from "@styles/fullBranchPalettesMap";
 
 const activePalettes: TBranchPalettesMap = new Map();
 
