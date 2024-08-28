@@ -5,7 +5,6 @@ import {
 	EBranchConnectionMemberRole,
 	EBranchConnectionType,
 } from "@logic/entities/Connection/ConnectionInterfaces";
-import { useMainContext } from "@context/MainContext";
 
 export const getUpdatedRepo = (props: ISaveBranchProps) => {
 	const { branch, parent, repo } = props;

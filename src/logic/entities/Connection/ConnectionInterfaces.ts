@@ -35,6 +35,7 @@ export interface IBranchConnection {
 	id: TBranchConnectionID;
 	type: EBranchConnectionType;
 	getBranchesByRole: (role: EBranchConnectionMemberRole) => IBranch[];
+	getConnectedBranches: () => IBranch[];
 	dumpToRawObject: () => IBranchConnectionRawObject;
 }
 

@@ -49,9 +49,10 @@ export const MainContextProvider: FC<IMainContextProps> = ({ children }) => {
 		currentBranchID,
 		setCurrentBranchID,
 		updateRepo: (repo: IRepo) => {
+			console.log("repo updated");
 			const newRepo = { ...repo, raw: repo.dumpToRawObject() };
+			storageProvider.saveRepo(newRepo);
 			setRepo(newRepo);
-			useStorage().saveRepo(repo);
 		},
 	};
 

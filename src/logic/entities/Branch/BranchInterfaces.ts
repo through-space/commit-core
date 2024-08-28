@@ -43,6 +43,9 @@ export interface IBranch extends ILogicEntity {
 	addConnection: (connection: IBranchConnection) => void;
 
 	getChildren: () => IBranch[];
+	getAllConnections: () => IBranchConnection[];
+
+	removeConnection: (connection: IBranchConnection) => void;
 
 	dumpToRawObject: () => IBranchRawObject;
 

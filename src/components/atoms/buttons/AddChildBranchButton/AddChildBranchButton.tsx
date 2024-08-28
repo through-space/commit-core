@@ -24,6 +24,7 @@ export const AddChildBranchButton = (props: IAddChildBranchButtonProps) => {
 		rawObject: BranchBuilder.getEmptyBranch(repo),
 	});
 
+	console.log("in AddChildBranchButton");
 	return (
 		<>
 			<button onClick={openBranchModal}>Add Branch</button>

@@ -32,6 +32,8 @@ export interface IRepo extends ILogicEntity {
 
 	saveBranch: (branch: IBranch) => void;
 	saveConnection: (connection: IBranchConnection) => void;
+
+	removeBranch: (branch: IBranch) => void;
 	// mainBranch: IBranch;
 
 	// getConnectionByID: (
@@ -54,7 +56,7 @@ export interface IRepoRawObject {
 	branches: IBranchRawObject[];
 	connections: IBranchConnectionRawObject[];
 	commits: ICommitRawObject[];
-	mainBranchID?: TBranchID;
+	mainBranchID: TBranchID;
 }
 
 export interface IRepoBuilderProps {

@@ -5,7 +5,7 @@ import { EmptyPage } from "@pages/common/EmptyPage";
 export const MainView = () => {
 	console.log("component loaded: MainView");
 	// const repo = RepoBuilder.getFromRawObject({
-	const { repo, updateRepo } = useMainContext();
+	const { repo } = useMainContext();
 	// 	rawObject: repoExampleObj,
 	// });
 	if (!repo) {

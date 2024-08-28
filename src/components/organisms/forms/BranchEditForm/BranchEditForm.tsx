@@ -41,6 +41,7 @@ export const BranchEditForm = (props: IBranchEditFormProps) => {
 				type="text"
 				value={branchName}
 				onChange={handleBranchNameChange}
+				autoFocus
 			/>
 			<button onClick={handleSave}>Save</button>
 			<button onClick={onClose}>Close</button>

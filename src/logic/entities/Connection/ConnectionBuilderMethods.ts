@@ -41,6 +41,10 @@ export const getBranchConnectionFromObject = (
 			.map((member) => member.branch);
 	};
 
+	const getConnectedBranches = () => {
+		return getMembers().map((member) => member.branch);
+	};
+
 	const dumpToRawObject = (): IBranchConnectionRawObject => {
 		return {
 			id,
@@ -56,6 +60,7 @@ export const getBranchConnectionFromObject = (
 		id,
 		type,
 		getBranchesByRole,
+		getConnectedBranches,
 		dumpToRawObject,
 	};
 };
