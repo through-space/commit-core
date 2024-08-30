@@ -4,8 +4,6 @@ Organize everything
 
 ## Table of Contents
 
-___
-
 - [Description](#description)
 - [Features](#features)
 - [Installation and Running](#Installation-and-Running)
