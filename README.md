@@ -37,10 +37,13 @@ npm run dev
 - [ ] **Add Scoring**
 	- [ ] Implement simple commit
 	- [ ]
+- [ ] **Create Function Diagram**
+- [ ] **Branch Commit**
+- [ ] **Add condition for branch to be committed**
+- [ ] **Branch Priority Function**
 - [ ] **Add Obsidian integration**
 	- [ ] Dump to file
 	- [ ] Read from file
 	- [ ] Write to Daily Notes
-- [ ] **Create Function Diagram**
 
 
