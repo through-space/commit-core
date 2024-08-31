@@ -51,5 +51,3 @@ npm run dev
 ## Bugs
 
 - [ ] **Setting main branch to other branch stops navigation**
-
-
