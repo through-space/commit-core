@@ -73,10 +73,33 @@ export const getRepoFromObject = (props: IRepoBuilderProps): IRepo => {
 		mainBranchID = branchID;
 	};
 
-	// const addBranch = (branch: IBranch) => {
-	// 	_branches = _branches ?? new Map();
-	// 	_branches.set(branch.id, branch);
-	// }
+	const saveBranch = (branch: IBranch) => {
+		_branches = _branches ?? new Map();
+		_branches.set(branch.id, branch);
+	};
+
+	const saveConnection = (connection: IBranchConnection) => {
+		_connections = _connections ?? new Map();
+		_connections.set(connection.id, connection);
+	};
+
+	const removeBranch = (branch: IBranch) => {
+		_branches = _branches ?? new Map();
+		_connections = _connections ?? new Map();
+
+		_branches.delete(branch.id);
+
+		branch.getAllConnections().forEach((connection) => {
+			const connnectedBranches = connection
+				.getConnectedBranches()
+				.filter((connectedBranch) => connectedBranch.id !== branch.id);
+
+			connnectedBranches.forEach((connectedBranch) =>
+				connectedBranch.removeConnection(connection),
+			);
+			_connections?.delete(connection.id);
+		});
+	};
 
 	repo = {
 		id,
@@ -86,7 +109,12 @@ export const getRepoFromObject = (props: IRepoBuilderProps): IRepo => {
 		getConnectionByID,
 		dumpToRawObject,
 
+		saveBranch,
+		saveConnection,
+
 		setMainBranchID,
+
+		removeBranch,
 	};
 
 	return repo;

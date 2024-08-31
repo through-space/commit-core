@@ -4,7 +4,18 @@ import {
 	IBranchConnectionBuilderProps,
 	IBranchConnectionMember,
 	IBranchConnectionRawObject,
+	TBranchConnectionID,
 } from "@logic/entities/Connection/ConnectionInterfaces";
+import dayjs from "dayjs";
+
+export const createConnectionID = (): TBranchConnectionID => {
+	return (
+		"connectionID_" +
+		Math.ceil(Math.random() * 1000000) +
+		"_" +
+		dayjs().unix()
+	);
+};
 
 export const getBranchConnectionFromObject = (
 	props: IBranchConnectionBuilderProps,
@@ -30,6 +41,10 @@ export const getBranchConnectionFromObject = (
 			.map((member) => member.branch);
 	};
 
+	const getConnectedBranches = () => {
+		return getMembers().map((member) => member.branch);
+	};
+
 	const dumpToRawObject = (): IBranchConnectionRawObject => {
 		return {
 			id,
@@ -45,6 +60,7 @@ export const getBranchConnectionFromObject = (
 		id,
 		type,
 		getBranchesByRole,
+		getConnectedBranches,
 		dumpToRawObject,
 	};
 };

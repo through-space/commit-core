@@ -10,6 +10,7 @@ import { ComponentSwitcher } from "@components/molecules/utils/ComponentSwitcher
 import { CliPanel } from "@components/molecules/cards/CliPanel/CliPanel";
 import { TasksView } from "@components/organisms/views/TasksView/TasksView";
 import { CalendarView } from "@components/organisms/views/CalendarView/CalendarView";
+import { ChildrenView } from "@components/organisms/views/ChildrenView/ChildrenView";
 
 // TODO: This component must have all logic of default and component switcher
 // TODO: Maybe navigation is here?
@@ -38,7 +39,7 @@ export const BasicLayout: FC<IBasicLayoutProps> = (props) => {
 			</BasicLayoutTopComponentWrapper>
 			<BasicLayoutMiddleComponentWrapper>
 				<ComponentSwitcher>
-					<TasksView />
+					<ChildrenView />
 				</ComponentSwitcher>
 			</BasicLayoutMiddleComponentWrapper>
 			<BasicLayoutBottomComponentWrapper>
