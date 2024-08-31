@@ -8,6 +8,7 @@ Organize everything
 - [Features](#features)
 - [Installation and Running](#Installation-and-Running)
 - [Roadmap](#roadmap)
+- [Bugs](#bugs)
 
 ## Description
 
@@ -34,9 +35,10 @@ npm run dev
 
 ## Roadmap
 
+- [ ] Navigation
+	- [ ] Back Button and history list to go back
 - [ ] **Add Scoring**
 	- [ ] Implement simple commit
-	- [ ]
 - [ ] **Create Function Diagram**
 - [ ] **Branch Commit**
 - [ ] **Add condition for branch to be committed**
@@ -45,5 +47,9 @@ npm run dev
 	- [ ] Dump to file
 	- [ ] Read from file
 	- [ ] Write to Daily Notes
+
+## Bugs
+
+- [ ] **Setting main branch to other branch stops navigation**
 
 
