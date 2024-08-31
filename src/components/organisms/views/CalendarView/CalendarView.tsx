@@ -7,7 +7,6 @@ import {
 } from "@components/organisms/views/CalendarView/CalendarViewStyledComponents";
 import dayjs from "dayjs";
 import weekday from "dayjs/plugin/weekday";
-import { AddChildBranchButton } from "@components/atoms/buttons/AddChildBranchButton/AddChildBranchButton";
 import { EmptyPage } from "@pages/common/EmptyPage";
 import { useCurrentBranch } from "@hooks/useCurrentBranch";
 import { HomeButton } from "@components/atoms/buttons/HomeButton/HomeButton";
