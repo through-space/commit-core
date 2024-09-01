@@ -35,8 +35,10 @@ npm run dev
 
 ## Roadmap
 
-- [ ] Navigation
+- [ ] **Navigation**
 	- [ ] Back Button and history list to go back
+- [ ] **Logic**
+	- [ ] Create update repo functions (for branches, connections, etc). They should return updated repo.
 - [ ] **Add Scoring**
 	- [ ] Implement simple commit
 - [ ] **Create Function Diagram**
@@ -51,4 +53,3 @@ npm run dev
 ## Bugs
 
 - [ ] **Setting main branch to other branch stops navigation**
-
