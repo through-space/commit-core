@@ -36,7 +36,12 @@ npm run dev
 ## Roadmap
 
 - [ ] **Navigation**
+	- [ ] Navigation Panel
+	- [ ] Views Switcher
 	- [ ] Back Button and history list to go back
+- [ ] **Views**
+	- [ ] Recursive View (branch in branch)
+	- [ ] Size by Contribution Value
 - [ ] **Logic**
 	- [ ] Create update repo functions (for branches, connections, etc). They should return updated repo.
 - [ ] **Add Scoring**
