@@ -11,6 +11,10 @@ import {
 	IRawObject,
 } from "@logic/common/LogicEntityInterfaces";
 import { IRepo } from "@logic/entities/Repo/RepoInterfaces";
+import {
+	IRawScoreEntry,
+	IScoreEntry,
+} from "@logic/entities/Score/ScoreInterfaces";
 
 export type TBranchID = string;
 
@@ -48,6 +52,8 @@ export interface IBranch extends ILogicEntity {
 	removeConnection: (connection: IBranchConnection) => void;
 
 	dumpToRawObject: () => IBranchRawObject;
+
+	getDailyScore: () => IScoreEntry;
 
 	// getAllConnections: () => IBranchConnection[];
 	// getChildren: () => IBranch[];
@@ -100,14 +106,11 @@ export interface IBranchRawObject extends IRawObject {
 	contributionValue?: number;
 
 	connectionIDs?: TBranchConnectionID[];
-	// commits: {
-	// 	[date: string]: TCommitID[];
-	// };
+	commits?: IRawScoreEntry[];
 }
 
 export interface IBranchBuilderProps extends ILogicEntityBuilderProps {
 	rawObject: IBranchRawObject;
-	repo: IRepo;
 }
 
 export interface IBranchBuilder extends ILogicEntityBuilder {
