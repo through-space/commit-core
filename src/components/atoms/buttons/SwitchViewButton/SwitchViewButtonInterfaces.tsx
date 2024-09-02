@@ -5,6 +5,6 @@ export enum ESwitchViewButtonDirection {
 
 export interface ISwitchViewButtonProps {
 	onClick: () => void;
-	isAvailable: boolean;
+	isAvailable?: boolean;
 	direction: ESwitchViewButtonDirection;
 }

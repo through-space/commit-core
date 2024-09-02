@@ -4,7 +4,7 @@ import {
 } from "@components/atoms/buttons/SwitchViewButton/SwitchViewButtonInterfaces";
 
 export const SwitchViewButton = (props: ISwitchViewButtonProps) => {
-	const { onClick, isAvailable, direction } = props;
+	const { onClick, isAvailable = true, direction } = props;
 	const icon = direction === ESwitchViewButtonDirection.LEFT ? "⬅️" : "➡️";
 
 	return (
