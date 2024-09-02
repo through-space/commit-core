@@ -1,3 +1,3 @@
 export const TasksView = () => {
-	return <>CentralPanel</>
-}
+	return <>Tasks View</>;
+};

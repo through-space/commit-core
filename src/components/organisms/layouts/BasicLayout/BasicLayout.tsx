@@ -6,11 +6,12 @@ import {
 	BasicLayoutMiddleComponentWrapper,
 	BasicLayoutTopComponentWrapper,
 } from "@components/organisms/layouts/BasicLayout/BasicLayoutStyledComponents";
-import { ComponentSwitcher } from "@components/molecules/utils/ComponentSwitcher/ComponentSwitcher";
+import { ComponentSwitcher } from "@components/organisms/utils/ComponentSwitcher/ComponentSwitcher";
 import { CliPanel } from "@components/molecules/cards/CliPanel/CliPanel";
 import { TasksView } from "@components/organisms/views/TasksView/TasksView";
 import { CalendarView } from "@components/organisms/views/CalendarView/CalendarView";
 import { ChildrenView } from "@components/organisms/views/ChildrenView/ChildrenView";
+import { EViewKeys } from "@components/organisms/views/viewsInterfaces";
 
 // TODO: This component must have all logic of default and component switcher
 // TODO: Maybe navigation is here?
@@ -34,12 +35,13 @@ export const BasicLayout: FC<IBasicLayoutProps> = (props) => {
 			<BasicLayoutTopComponentWrapper>
 				<ComponentSwitcher>
 					{/*<CurrentBranchInfo/>*/}
-					<CalendarView />
+					<CalendarView key={EViewKeys.CALENDAR} />
 				</ComponentSwitcher>
 			</BasicLayoutTopComponentWrapper>
 			<BasicLayoutMiddleComponentWrapper>
-				<ComponentSwitcher>
-					<ChildrenView />
+				<ComponentSwitcher initView={EViewKeys.CALENDAR}>
+					<ChildrenView key={EViewKeys.CHILDREN} />
+					<TasksView key={EViewKeys.TASKS} />
 				</ComponentSwitcher>
 			</BasicLayoutMiddleComponentWrapper>
 			<BasicLayoutBottomComponentWrapper>
