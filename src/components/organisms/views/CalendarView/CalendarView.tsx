@@ -36,7 +36,11 @@ export const CalendarView: FC = () => {
 				<div>{branch.name}</div>
 			</CalendarViewTopComponentWrapper>
 			<CalendarViewContentWrapper>
-				<CalendarGrid startDate={startDay} endDate={endDay} />
+				<CalendarGrid
+					startDate={startDay}
+					endDate={endDay}
+					branch={branch}
+				/>
 			</CalendarViewContentWrapper>
 		</CalendarViewWrapper>
 	);

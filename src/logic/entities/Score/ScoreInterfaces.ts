@@ -6,11 +6,13 @@ export interface IRawScoreEntry {
 	score: number;
 	max: number;
 	commitID: TCommitID;
-	timestamp: string;
 }
 
-export interface IScoreEntry extends IRawScoreEntry {
+export interface IScoreEntry {
+	score: number;
+	max: number;
 	time: dayjs.Dayjs;
+	commitID?: TCommitID;
 }
 
 export type TDailyScoreMap = Map<T_DEFAULT_DATE_FORMAT, IScoreEntry[]>;
@@ -21,4 +23,6 @@ export interface IScoreBuilderProps {
 
 export interface IScoreBuilder {
 	getFromObject(props: IScoreBuilderProps): IScoreEntry;
+
+	getEmptyScore(): IScoreEntry;
 }

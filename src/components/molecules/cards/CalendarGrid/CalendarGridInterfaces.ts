@@ -1,12 +1,17 @@
 import dayjs from "dayjs";
+import { IBranch } from "@logic/entities/Branch/BranchInterfaces";
 
 export interface ICalendarGridDateProps {
 	startDate: dayjs.Dayjs;
 	endDate: dayjs.Dayjs;
 }
 
-export type ICalendarGridProps = ICalendarGridDateProps;
+export interface ICalendarGridProps extends ICalendarGridDateProps {
+	branch: IBranch;
+}
 
-export type ICalendarGridChartProps = ICalendarGridDateProps;
+export interface ICalendarGridChartProps extends ICalendarGridDateProps {
+	branch: IBranch;
+}
 
 export type ICalendarGridMonthsRowProps = ICalendarGridDateProps;

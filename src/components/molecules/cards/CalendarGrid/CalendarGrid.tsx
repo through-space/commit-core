@@ -6,13 +6,17 @@ import { CalendarGridWeekDaysColumn } from "@components/atoms/calendar-grid/Cale
 import { ICalendarGridProps } from "@components/molecules/cards/CalendarGrid/CalendarGridInterfaces";
 
 export const CalendarGrid: FC<ICalendarGridProps> = (props) => {
-	const { startDate, endDate } = props;
+	const { startDate, endDate, branch } = props;
 
 	return (
 		<CalendarGridWrapper>
 			<CalendarGridMonthsRow startDate={startDate} endDate={endDate} />
 			<CalendarGridWeekDaysColumn />
-			<CalendarGridChart startDate={startDate} endDate={endDate} />
+			<CalendarGridChart
+				startDate={startDate}
+				endDate={endDate}
+				branch={branch}
+			/>
 		</CalendarGridWrapper>
 	);
 };

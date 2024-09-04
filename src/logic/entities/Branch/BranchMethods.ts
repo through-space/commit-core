@@ -5,14 +5,13 @@ import {
 } from "@logic/entities/Branch/BranchInterfaces";
 import {
 	EBranchConnectionMemberRole,
-	IBranchConnection, TBranchConnectionID
+	IBranchConnection,
 } from "@logic/entities/Connection/ConnectionInterfaces";
-import dayjs, { Dayjs, name } from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import {
 	IScoreEntry,
 	TDailyScoreMap,
 } from "@logic/entities/Score/ScoreInterfaces";
-import { IRepo } from "@logic/entities/Repo/RepoInterfaces";
 import { DAILY_DATE_FORMAT, T_DEFAULT_DATE_FORMAT } from "@config/commonConsts";
 import { ScoreBuilder } from "@logic/entities/Score/ScoreConsts";
 
@@ -50,16 +49,33 @@ export const getBranchFromObject = (props: IBranchBuilderProps): IBranch => {
 		const dailyScoreMap = new Map<T_DEFAULT_DATE_FORMAT, IScoreEntry[]>();
 
 		(rawObject?.scores ?? []).forEach((score) => {
-			const entry = ScoreBuilder.getFromObject({
+			const scoreEntry = ScoreBuilder.getFromObject({
 				rawObject: score,
 			});
 
-			const date = entry.time.format(DAILY_DATE_FORMAT);
+			const date = scoreEntry.time.format(
+				DAILY_DATE_FORMAT,
+			) as T_DEFAULT_DATE_FORMAT;
 			const dailyEntries = dailyScoreMap.get(date) ?? [];
-			entries.push(entry);
-			_dailyScoreMap.set(date, entries);
+			dailyEntries.push(scoreEntry);
+			dailyEntries.sort((a, b) => a.time.diff(b.time));
+			dailyScoreMap.set(date, dailyEntries);
+		});
+
+		_dailyScoreMap = dailyScoreMap;
+
+		return dailyScoreMap;
+	};
+
+	const getDailyScore = (date: Dayjs): IScoreEntry => {
+		const dateStr = date.format(DAILY_DATE_FORMAT) as T_DEFAULT_DATE_FORMAT;
+		const dailyScores = getDailyScoresMap().get(dateStr) ?? [];
+
+		if (!dailyScores.length) {
+			return ScoreBuilder.getEmptyScore();
 		}
 
+		return dailyScores[dailyScores.length - 1];
 	};
 
 	const getChildren = () => {
