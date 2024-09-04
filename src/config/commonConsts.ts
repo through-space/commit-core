@@ -20,7 +20,7 @@ type Day = `${"0" | "1" | "2"}${number}` | "30" | "31";
 
 export type T_DEFAULT_DATE_FORMAT = `${Year}-${Month}-${Day}`;
 
-export const DEFAULT_DATE_FORMAT = "YYYY-MM-DD";
+export const DAILY_DATE_FORMAT = "YYYY-MM-DD";
 
 export const TRANSPARENT_COLOR = "unset";
 export const DEFAULT_COMPLETION_RATE_METHOD = getCompletionRateByPercentage;

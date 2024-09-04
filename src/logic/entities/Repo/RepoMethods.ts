@@ -90,11 +90,11 @@ export const getRepoFromObject = (props: IRepoBuilderProps): IRepo => {
 		_branches.delete(branch.id);
 
 		branch.getAllConnections().forEach((connection) => {
-			const connnectedBranches = connection
+			const connectedBranches = connection
 				.getConnectedBranches()
 				.filter((connectedBranch) => connectedBranch.id !== branch.id);
 
-			connnectedBranches.forEach((connectedBranch) =>
+			connectedBranches.forEach((connectedBranch) =>
 				connectedBranch.removeConnection(connection),
 			);
 			_connections?.delete(connection.id);

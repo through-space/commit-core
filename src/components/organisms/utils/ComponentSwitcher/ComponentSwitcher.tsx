@@ -3,6 +3,7 @@ import React, { FC, useEffect, useState } from "react";
 import { ViewSwitcherButtonPanel } from "@components/molecules/button-panels/ViewSwitcherButtonPanel/ViewSwitcherButtonPanel";
 
 //TODO: maybe use https://www.npmjs.com/package/react-swipe only for mobile
+//TODO: consider React.Children alternatives: https://react.dev/reference/react/Children#alternatives
 
 export const ComponentSwitcher: FC<IComponentSwitcherProps> = ({
 	children,

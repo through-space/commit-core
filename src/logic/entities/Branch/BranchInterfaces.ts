@@ -15,6 +15,7 @@ import {
 	IRawScoreEntry,
 	IScoreEntry,
 } from "@logic/entities/Score/ScoreInterfaces";
+import { ICommit } from "@logic/entities/Commit/CommitInterfaces";
 
 export type TBranchID = string;
 
@@ -53,7 +54,9 @@ export interface IBranch extends ILogicEntity {
 
 	dumpToRawObject: () => IBranchRawObject;
 
-	getDailyScore: () => IScoreEntry;
+	getDailyScore: (date: dayjs.Dayjs) => IScoreEntry;
+
+	// doCommit: (commit: ICommit) => void;
 
 	// getAllConnections: () => IBranchConnection[];
 	// getChildren: () => IBranch[];
@@ -107,6 +110,7 @@ export interface IBranchRawObject extends IRawObject {
 
 	connectionIDs?: TBranchConnectionID[];
 	commits?: IRawScoreEntry[];
+	scores?: IRawScoreEntry[];
 }
 
 export interface IBranchBuilderProps extends ILogicEntityBuilderProps {

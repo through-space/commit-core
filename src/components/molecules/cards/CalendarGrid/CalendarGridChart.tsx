@@ -3,7 +3,7 @@ import { CalendarGridChartWrapper } from "@components/molecules/cards/CalendarGr
 import { ICalendarGridChartProps } from "@components/molecules/cards/CalendarGrid/CalendarGridInterfaces";
 import dayjs from "dayjs";
 import { DaySquare } from "@components/atoms/calendar-grid/DaySquare";
-import { DEFAULT_DATE_FORMAT } from "@config/commonConsts";
+import { DAILY_DATE_FORMAT } from "@config/commonConsts";
 import { getNumOfWeeks } from "@components/molecules/cards/CalendarGrid/CalendarGridConsts";
 
 export const CalendarGridChart: FC<ICalendarGridChartProps> = (props) => {
@@ -15,10 +15,7 @@ export const CalendarGridChart: FC<ICalendarGridChartProps> = (props) => {
 		for (let i = 0; i < numberOfDays; i++) {
 			const date = dayjs(startDate).add(i, "day");
 			daySquares.push(
-				<DaySquare
-					key={date.format(DEFAULT_DATE_FORMAT)}
-					date={date}
-				/>,
+				<DaySquare key={date.format(DAILY_DATE_FORMAT)} date={date} />,
 			);
 		}
 

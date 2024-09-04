@@ -5,9 +5,16 @@ import {
 } from "@logic/entities/Branch/BranchInterfaces";
 import {
 	EBranchConnectionMemberRole,
-	IBranchConnection,
+	IBranchConnection, TBranchConnectionID
 } from "@logic/entities/Connection/ConnectionInterfaces";
-import dayjs from "dayjs";
+import dayjs, { Dayjs, name } from "dayjs";
+import {
+	IScoreEntry,
+	TDailyScoreMap,
+} from "@logic/entities/Score/ScoreInterfaces";
+import { IRepo } from "@logic/entities/Repo/RepoInterfaces";
+import { DAILY_DATE_FORMAT, T_DEFAULT_DATE_FORMAT } from "@config/commonConsts";
+import { ScoreBuilder } from "@logic/entities/Score/ScoreConsts";
 
 export const createBranchID = (): TBranchID => {
 	return (
@@ -19,17 +26,40 @@ export const getBranchFromObject = (props: IBranchBuilderProps): IBranch => {
 	const { rawObject, repo } = props;
 	const { name, id } = rawObject;
 	let _connections: IBranchConnection[] | null = null;
+	let _dailyScoreMap: TDailyScoreMap | null = null;
 
 	const getAllConnections = () => {
-		if (_connections === null) {
-			_connections = (rawObject.connectionIDs ?? [])
-				.map((connectionID) => repo.getConnectionByID(connectionID))
-				.filter(
-					(connection) => connection !== undefined,
-				) as IBranchConnection[];
+		if (_connections !== null) {
+			return _connections;
 		}
 
+		_connections = (rawObject.connectionIDs ?? [])
+			.map((connectionID) => repo.getConnectionByID(connectionID))
+			.filter(
+				(connection) => connection !== undefined,
+			) as IBranchConnection[];
+
 		return _connections;
+	};
+
+	const getDailyScoresMap = () => {
+		if (_dailyScoreMap !== null) {
+			return _dailyScoreMap;
+		}
+
+		const dailyScoreMap = new Map<T_DEFAULT_DATE_FORMAT, IScoreEntry[]>();
+
+		(rawObject?.scores ?? []).forEach((score) => {
+			const entry = ScoreBuilder.getFromObject({
+				rawObject: score,
+			});
+
+			const date = entry.time.format(DAILY_DATE_FORMAT);
+			const dailyEntries = dailyScoreMap.get(date) ?? [];
+			entries.push(entry);
+			_dailyScoreMap.set(date, entries);
+		}
+
 	};
 
 	const getChildren = () => {
@@ -73,6 +103,8 @@ export const getBranchFromObject = (props: IBranchBuilderProps): IBranch => {
 		);
 	};
 
+	// const getDailyScore = (date: dayjs.Dayjs): IScoreEntry => {};
+
 	return {
 		raw: rawObject,
 		id,
@@ -82,5 +114,6 @@ export const getBranchFromObject = (props: IBranchBuilderProps): IBranch => {
 		getChildren,
 		removeConnection,
 		dumpToRawObject,
+		getDailyScore,
 	};
 };

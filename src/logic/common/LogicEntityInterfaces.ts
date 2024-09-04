@@ -42,7 +42,7 @@ export type TGeneralEntityMap<
 
 export interface ILogicEntityBuilderProps {
 	rawObject: IRawObject;
-	repo?: IRepo;
+	repo: IRepo;
 }
 
 export interface IBuildObjectsMapProps {
