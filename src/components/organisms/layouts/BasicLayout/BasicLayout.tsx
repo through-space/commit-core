@@ -6,7 +6,7 @@ import {
 	BasicLayoutMiddleComponentWrapper,
 	BasicLayoutTopComponentWrapper,
 } from "@components/organisms/layouts/BasicLayout/BasicLayoutStyledComponents";
-import { ComponentSwitcher } from "@components/organisms/utils/ComponentSwitcher/ComponentSwitcher";
+import { ViewSwitcher } from "@components/organisms/utils/ViewSwitcher/ViewSwitcher";
 import { CliPanel } from "@components/molecules/cards/CliPanel/CliPanel";
 import { TasksView } from "@components/organisms/views/TasksView/TasksView";
 import { CalendarView } from "@components/organisms/views/CalendarView/CalendarView";
@@ -17,32 +17,23 @@ import { EViewKeys } from "@components/organisms/views/viewsInterfaces";
 // TODO: Maybe navigation is here?
 // Add kind of navigation to the top of the page Provider?
 
-const defaultLayoutComponents = {
-	// topComponent: [<CurrentBranchInfo/>],
-	// middleComponent: [],
-	// bottomComponent: [CliPanel],
-};
-
 export const BasicLayout: FC<IBasicLayoutProps> = (props) => {
-	// const {
-	// 	topComponents = defaultLayoutComponents.topComponent,
-	// 	middleComponents = defaultLayoutComponents.middleComponent,
-	// 	bottomComponents = defaultLayoutComponents.bottomComponent,
-	// } = props;
+	const topViews = [
+		{ key: EViewKeys.CALENDAR, renderView: () => <CalendarView /> },
+	];
+
+	const middleViews = [
+		{ key: EViewKeys.CHILDREN, renderView: () => <ChildrenView /> },
+		{ key: EViewKeys.TASKS, renderView: () => <TasksView /> },
+	];
 
 	return (
 		<BasicLayoutContentWrapper>
 			<BasicLayoutTopComponentWrapper>
-				<ComponentSwitcher>
-					{/*<CurrentBranchInfo/>*/}
-					<CalendarView key={EViewKeys.CALENDAR} />
-				</ComponentSwitcher>
+				<ViewSwitcher views={topViews} />
 			</BasicLayoutTopComponentWrapper>
 			<BasicLayoutMiddleComponentWrapper>
-				<ComponentSwitcher initView={EViewKeys.CALENDAR}>
-					<ChildrenView key={EViewKeys.CHILDREN} />
-					<TasksView key={EViewKeys.TASKS} />
-				</ComponentSwitcher>
+				<ViewSwitcher views={middleViews} />
 			</BasicLayoutMiddleComponentWrapper>
 			<BasicLayoutBottomComponentWrapper>
 				<CliPanel />

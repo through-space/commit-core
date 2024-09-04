@@ -1,5 +1,4 @@
 import { IViewSwitcherButtonPanelProps } from "@components/molecules/button-panels/ViewSwitcherButtonPanel/ViewSwitcherButtonPanelInterfaces";
-import { useState } from "react";
 import { SwitchViewButton } from "@components/atoms/buttons/SwitchViewButton/SwitchViewButton";
 import { ESwitchViewButtonDirection } from "@components/atoms/buttons/SwitchViewButton/SwitchViewButtonInterfaces";
 
@@ -8,9 +7,12 @@ export const ViewSwitcherButtonPanel = (
 ) => {
 	const { childrenLength, currentIndex, setCurrentIndex } = props;
 
+	if (childrenLength < 2) {
+		return null;
+	}
+
 	const switchIndex = (step: number) => {
 		const newIndex = (currentIndex + step) % childrenLength;
-		console.log("newIndex", newIndex);
 		setCurrentIndex(newIndex);
 	};
 
