@@ -1,33 +1,30 @@
-import { IComponentSwitcherProps } from "@components/organisms/utils/ComponentSwitcher/ComponentSwitcherInterfaces";
+import { IViewSwitcherProps } from "@components/organisms/utils/ViewSwitcher/ViewSwitcherInterfaces";
 import React, { FC, useEffect, useState } from "react";
 import { ViewSwitcherButtonPanel } from "@components/molecules/button-panels/ViewSwitcherButtonPanel/ViewSwitcherButtonPanel";
+import { ViewSwitcherViewWrapper } from "@components/organisms/utils/ViewSwitcher/ViewStyledComponents";
 
 //TODO: maybe use https://www.npmjs.com/package/react-swipe only for mobile
 //TODO: consider React.Children alternatives: https://react.dev/reference/react/Children#alternatives
 
-export const ComponentSwitcher: FC<IComponentSwitcherProps> = ({
-	children,
-	initView,
+export const ViewSwitcher: FC<IViewSwitcherProps> = ({
+	views,
+	initViewKey,
 }) => {
 	const [currentComponentIndex, setCurrentComponentIndex] =
 		useState<number>(0);
 
-	if (!children) {
+	if (!views.length) {
 		return null;
 	}
 
 	const initCurrentComponent = () => {
-		if (!initView) {
+		if (!initViewKey) {
 			return;
 		}
 
-		const index = React.Children.toArray(children).findIndex(
-			(child: React.ReactNode) => {
-				if (React.isValidElement(child)) {
-					return child?.key === initView;
-				}
-			},
-		);
+		const index = views.findIndex((view) => {
+			return view.key === initViewKey;
+		});
 
 		setCurrentComponentIndex(index > -1 ? index : 0);
 	};
@@ -37,16 +34,19 @@ export const ComponentSwitcher: FC<IComponentSwitcherProps> = ({
 	}, []);
 
 	const getComponent = () => {
-		const childrenArray = Array.isArray(children) ? children : [children];
-
-		return childrenArray[currentComponentIndex] ?? null;
+		const currentView = views[currentComponentIndex];
+		return (
+			<ViewSwitcherViewWrapper key={currentView.key}>
+				{currentView.renderView()}
+			</ViewSwitcherViewWrapper>
+		);
 	};
 
 	return (
 		<>
 			{getComponent()}
 			<ViewSwitcherButtonPanel
-				childrenLength={React.Children.count(children)}
+				childrenLength={views.length}
 				currentIndex={currentComponentIndex}
 				setCurrentIndex={setCurrentComponentIndex}
 			/>
