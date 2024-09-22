@@ -1,4 +1,4 @@
-import { useMainContext } from "@context/MainContext";
+import { useMainContext } from "@context/MainContext/MainContext";
 import { useEffect, useState } from "react";
 import { EmptyPage } from "@pages/common/EmptyPage";
 import {

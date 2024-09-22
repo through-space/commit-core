@@ -1,5 +1,5 @@
 import { BasicLayout } from "@components/organisms/layouts/BasicLayout/BasicLayout";
-import { useMainContext } from "../../context/MainContext";
+import { useMainContext } from "@context/MainContext/MainContext";
 import { EmptyPage } from "@pages/common/EmptyPage";
 
 export const MainView = () => {

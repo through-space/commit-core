@@ -3,7 +3,7 @@ import { Modal } from "@components/atoms/modals/Modal";
 import { useState } from "react";
 import { BranchEditForm } from "@components/organisms/forms/BranchEditForm/BranchEditForm";
 import { BranchBuilder } from "@logic/entities/Branch/BranchConsts";
-import { useMainContext } from "@context/MainContext";
+import { useMainContext } from "@context/MainContext/MainContext";
 
 export const AddChildBranchButton = (props: IAddChildBranchButtonProps) => {
 	const { sourceBranch } = props;

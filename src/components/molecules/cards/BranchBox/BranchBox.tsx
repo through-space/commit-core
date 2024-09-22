@@ -1,7 +1,7 @@
 import { IBranchBoxProps } from "@components/molecules/cards/BranchBox/BranchBoxInterfaces";
 import { BranchBoxWrapper } from "@components/molecules/cards/BranchBox/BranchBoxStyledComponents";
 import { BranchBoxButtonPanel } from "@components/molecules/button-panels/BranchBoxButtonPanel/BranchBoxButtonPanel";
-import { useMainContext } from "@context/MainContext";
+import { useMainContext } from "@context/MainContext/MainContext";
 
 export const BranchBox = (props: IBranchBoxProps) => {
 	const { branch } = props;

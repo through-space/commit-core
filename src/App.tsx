@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { MainView } from "@pages/main/MainView";
 import GlobalStyle from "./styles/GlobalStyle";
-import { MainContextProvider } from "./context/MainContext";
+import { MainContextProvider } from "@context/MainContext/MainContext";
 
 const App: FC = () => {
 	return (

@@ -1,4 +1,4 @@
-import { useMainContext } from "@context/MainContext";
+import { useMainContext } from "@context/MainContext/MainContext";
 import { IRemoveBranchButtonProps } from "@components/atoms/buttons/RemoveBranchButton/RemoveBranchButtonInterfaces";
 
 export const RemoveBranchButton = (props: IRemoveBranchButtonProps) => {

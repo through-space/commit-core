@@ -1,4 +1,4 @@
-import { useMainContext } from "@context/MainContext";
+import { useMainContext } from "@context/MainContext/MainContext";
 import { IBranch } from "@logic/entities/Branch/BranchInterfaces";
 
 export const useCurrentBranch = (): IBranch | undefined => {

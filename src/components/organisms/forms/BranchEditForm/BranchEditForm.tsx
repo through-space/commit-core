@@ -1,5 +1,5 @@
 import { IBranchEditFormProps } from "@components/organisms/forms/BranchEditForm/BranchEditFormInterfaces";
-import { useMainContext } from "@context/MainContext";
+import { useMainContext } from "@context/MainContext/MainContext";
 import { useState } from "react";
 import { BranchBuilder } from "@logic/entities/Branch/BranchConsts";
 import { getUpdatedRepo } from "@components/organisms/forms/BranchEditForm/BranchEditFormConsts";
