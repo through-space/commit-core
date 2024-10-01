@@ -4,18 +4,24 @@ import {
 	CalendarViewContentWrapper,
 	CalendarViewTopComponentWrapper,
 	CalendarViewWrapper,
-} from "@components/organisms/views/CalendarView/CalendarViewStyledComponents";
+} from "./CalendarViewStyledComponents";
 import dayjs from "dayjs";
 import weekday from "dayjs/plugin/weekday";
 import { EmptyPage } from "@pages/common/EmptyPage";
 import { useCurrentBranch } from "@hooks/useCurrentBranch";
 import { HomeButton } from "@components/atoms/buttons/HomeButton/HomeButton";
+import { ChildrenViewButtonPanel } from "@components/organisms/button-panels/ChildrenViewButtonPanel/ChildrenViewButtonPanel";
 
 export const CalendarView: FC = () => {
 	const branch = useCurrentBranch();
 
 	if (!branch) {
-		return <EmptyPage />;
+		return (
+			<>
+				<ChildrenViewButtonPanel />
+				<EmptyPage />
+			</>
+		);
 	}
 
 	dayjs.extend(weekday);

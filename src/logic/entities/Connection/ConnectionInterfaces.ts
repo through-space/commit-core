@@ -1,9 +1,4 @@
-import {
-	IBranch,
-	IBranchBuilderProps,
-	IBranchRawObject,
-	TBranchID,
-} from "@logic/entities/Branch/BranchInterfaces";
+import { TBranchID } from "@logic/entities/Branch/BranchInterfaces";
 import {
 	ILogicEntityBuilder,
 	ILogicEntityBuilderProps,
@@ -21,7 +16,7 @@ export enum EBranchConnectionMemberRole {
 
 export interface IBranchConnectionMember {
 	role: EBranchConnectionMemberRole;
-	branch: IBranch;
+	branchID: TBranchID;
 }
 
 export interface IBranchConnectionRawMember {
@@ -34,9 +29,7 @@ export type TBranchConnectionID = string;
 export interface IBranchConnection {
 	id: TBranchConnectionID;
 	type: EBranchConnectionType;
-	getBranchesByRole: (role: EBranchConnectionMemberRole) => IBranch[];
-	getConnectedBranches: () => IBranch[];
-	dumpToRawObject: () => IBranchConnectionRawObject;
+	members: IBranchConnectionMember[];
 }
 
 export interface IBranchConnectionRawObject {
@@ -52,5 +45,5 @@ export interface IBranchConnectionBuilderProps
 }
 
 export interface IBranchConnectionBuilder extends ILogicEntityBuilder {
-	getFromObject: (props: IBranchConnectionBuilderProps) => IBranchConnection;
+	getFromObject: (rawEntity: IBranchConnectionRawObject) => IBranchConnection;
 }

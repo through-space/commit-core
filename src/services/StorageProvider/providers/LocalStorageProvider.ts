@@ -1,5 +1,6 @@
 import { IStorageProvider } from "@services/StorageProvider/StorageProviderInterfaces";
 import { emptyRawRepo } from "@data/templates/emptyRepo";
+import { RepoBuilder } from "@logic/entities/Repo/RepoConsts";
 
 export const getLocalStorageKey = (repoID: string) => `repo_${repoID}`;
 
@@ -17,7 +18,8 @@ export const LocalStorageProvider: IStorageProvider = {
 		const localStorageKey = getLocalStorageKey(repo.id);
 		localStorage.setItem(
 			localStorageKey,
-			JSON.stringify(repo.dumpToRawObject()),
+			JSON.stringify(RepoBuilder.dumpToRawObject(repo)),
+			// JSON.stringify(emptyRawRepo),
 		);
 	},
 };

@@ -1,17 +1,19 @@
-import { createContext, FC, useContext, useEffect, useState } from "react";
+import { createContext, FC, useContext, useReducer, useState } from "react";
 import { IMainContext, IMainContextProps } from "./MainContextTypes";
 import { DEFAULT_MAIN_BRANCH_ID, DEFAULT_REPO_ID } from "@config/commonConsts";
-import { IRepo } from "@logic/entities/Repo/RepoInterfaces";
 import { RepoBuilder } from "@logic/entities/Repo/RepoConsts";
 import { TBranchID } from "@logic/entities/Branch/BranchInterfaces";
 import { useStorage } from "@hooks/useStorage";
-import { emptyRepo } from "@data/templates/emptyRepo";
+import { emptyRawRepo, emptyRepo } from "@data/templates/emptyRepo";
+import { repoReducer } from "../../reducers/repo/repoReducer";
+import { ERepReducerActionTypes } from "../../reducers/repo/repoReducerInterfaces";
+import { RepoGetters } from "../../selectors/RepoSelectors";
 
 const MainContext = createContext<IMainContext>({
-	repo: emptyRepo,
 	currentBranchID: DEFAULT_MAIN_BRANCH_ID,
-	updateRepo: () => {},
 	setCurrentBranchID: () => {},
+	repo: emptyRepo,
+	repoDispatch: () => {},
 });
 
 export const useMainContext = (): IMainContext => {
@@ -19,41 +21,53 @@ export const useMainContext = (): IMainContext => {
 };
 
 export const MainContextProvider: FC<IMainContextProps> = ({ children }) => {
-	const [repo, setRepo] = useState<IRepo>(emptyRepo);
+	const [repoState, repoDispatch] = useReducer(repoReducer, emptyRepo);
 	const [currentBranchID, setCurrentBranchID] = useState<TBranchID | null>(
 		null,
 	);
+	const [repoLoaded, setRepoLoaded] = useState(false);
 
 	const storageProvider = useStorage();
 
 	const fetchRepo = async () => {
 		//TODO: add error handling
+		console.log("fetching repo");
+		storageProvider
+			.getRepo(DEFAULT_REPO_ID)
+			.then((res) => {
+				// console.log("res", res);
+				const repo = RepoBuilder.getFromRawObject(res ?? emptyRawRepo);
 
-		const rawRepo = await storageProvider.getRepo(DEFAULT_REPO_ID);
-
-		if (rawRepo) {
-			const repo = RepoBuilder.getFromRawObject({
-				rawObject: rawRepo,
+				repoDispatch({
+					type: ERepReducerActionTypes.SET_REPO,
+					repo: repo,
+				});
+				console.log("Repo loaded", repo);
+				if (
+					repo.mainBranchID &&
+					RepoGetters.getBranchByID(repo, repo.mainBranchID)
+				) {
+					setCurrentBranchID(repo.mainBranchID);
+				}
+			})
+			.catch((err) => {
+				console.log("Repo not loaded", err);
 			});
-			setRepo(repo);
-			setCurrentBranchID(repo.mainBranchID ?? null);
-		}
 	};
 
-	useEffect(() => {
+	if (!repoLoaded) {
 		fetchRepo();
-	}, []);
+		setRepoLoaded(true);
+	}
+	// useEffect(() => {
+	// fetchRepo();
+	// }, []);
 
 	const context = {
-		repo,
 		currentBranchID,
 		setCurrentBranchID,
-		updateRepo: (repo: IRepo) => {
-			console.log("repo updated");
-			const newRepo = { ...repo, raw: repo.dumpToRawObject() };
-			storageProvider.saveRepo(newRepo);
-			setRepo(newRepo);
-		},
+		repo: repoState,
+		repoDispatch,
 	};
 
 	return (
