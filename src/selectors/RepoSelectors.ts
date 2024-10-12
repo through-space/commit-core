@@ -55,7 +55,9 @@ const getConnectedBranches = (
 	return connections
 		.flatMap((connection) => connection.members)
 		.filter((member) => member.branchID !== branchID)
-		.map((member) => getBranchByID(repo, member.branchID))
+		.map((member) =>
+			member.branchID ? getBranchByID(repo, member.branchID) : null,
+		)
 		.filter((branch): branch is IBranch => branch !== null);
 };
 

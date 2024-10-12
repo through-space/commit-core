@@ -1,7 +1,8 @@
+import { DEFAULT_REPO_ID } from "@config/commonConsts";
 import { IRepo, IRepoRawObject } from "@logic/entities/Repo/RepoInterfaces";
 
 export const emptyRawRepo: IRepoRawObject = {
-	id: "empty_repo_1",
+	id: DEFAULT_REPO_ID,
 	branches: [],
 	commits: [],
 	connections: [],

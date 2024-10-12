@@ -1,12 +1,12 @@
 import { IRepo } from "@logic/entities/Repo/RepoInterfaces";
-import { IBranch } from "@logic/entities/Branch/BranchInterfaces";
+import { IBranch, TBranchID } from "@logic/entities/Branch/BranchInterfaces";
 import {
 	IBranchConnection,
 	TBranchConnectionID,
 } from "@logic/entities/Connection/ConnectionInterfaces";
 
-export const setRepo = (state: IRepo): IRepo => {
-	return state;
+export const setRepo = (repo: IRepo): IRepo => {
+	return repo;
 };
 
 export const setBranch = (repo: IRepo, branch: IBranch): IRepo => {
@@ -15,6 +15,13 @@ export const setBranch = (repo: IRepo, branch: IBranch): IRepo => {
 		branches: repo.branches.find((b) => b.id === branch.id)
 			? repo.branches.map((b) => (b.id === branch.id ? branch : b))
 			: [...repo.branches, branch],
+	};
+};
+
+export const setMainBranch = (repo: IRepo, branchID: string): IRepo => {
+	return {
+		...repo,
+		mainBranchID: branchID,
 	};
 };
 
@@ -32,15 +39,15 @@ export const setConnection = (
 	};
 };
 
-export const addBranchConnection = (
+export const setBranchConnection = (
 	repo: IRepo,
-	branch: IBranch,
+	branchID: TBranchID,
 	connectionID: TBranchConnectionID,
 ): IRepo => {
 	return {
 		...repo,
 		branches: repo.branches.map((b) =>
-			b.id === branch.id
+			b.id === branchID
 				? { ...b, connectionIDs: [...b.connectionIDs, connectionID] }
 				: b,
 		),

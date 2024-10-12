@@ -1,9 +1,16 @@
 import { IRepo } from "@logic/entities/Repo/RepoInterfaces";
-import { IBranch } from "@logic/entities/Branch/BranchInterfaces";
+import { IBranch, TBranchID } from "@logic/entities/Branch/BranchInterfaces";
+import {
+	IBranchConnection,
+	TBranchConnectionID,
+} from "@logic/entities/Connection/ConnectionInterfaces";
 
 export enum ERepReducerActionTypes {
 	SET_REPO = "SET_REPO",
 	SET_BRANCH = "SET_BRANCH",
+	SET_MAIN_BRANCH = "SET_MAIN_BRANCH",
+	SET_CONNECTION = "SET_CONNECTION",
+	SET_BRANCH_CONNECTION = "SET_BRANCH_CONNECTION",
 }
 
 export interface ISetRepoAction {
@@ -16,4 +23,25 @@ export interface ISetBranchAction {
 	branch: IBranch;
 }
 
-export type TRepoAction = ISetRepoAction | ISetBranchAction;
+export interface ISetMainBranchAction {
+	type: ERepReducerActionTypes.SET_MAIN_BRANCH;
+	branchID: TBranchID;
+}
+
+export interface ISetConnectionAction {
+	type: ERepReducerActionTypes.SET_CONNECTION;
+	connection: IBranchConnection;
+}
+
+export interface ISetBranchConnectionAction {
+	type: ERepReducerActionTypes.SET_BRANCH_CONNECTION;
+	branchID: TBranchID;
+	connectionID: TBranchConnectionID;
+}
+
+export type TRepoAction =
+	| ISetRepoAction
+	| ISetBranchAction
+	| ISetMainBranchAction
+	| ISetConnectionAction
+	| ISetBranchConnectionAction;

@@ -1,7 +1,9 @@
 import { useMainContext } from "@context/MainContext/MainContext";
+import { useRepo } from "@context/RepoContext/RepoContext";
 
 export const HomeButton = () => {
-	const { setCurrentBranchID, repo } = useMainContext();
+	const { setCurrentBranchID } = useMainContext();
+	const repo = useRepo();
 
 	const mainBranchID = repo.mainBranchID;
 
