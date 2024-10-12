@@ -11,11 +11,14 @@ import {
 	EBranchConnectionType,
 } from "@logic/entities/Connection/ConnectionInterfaces";
 import { ChildrenViewButtonPanel } from "@components/organisms/button-panels/ChildrenViewButtonPanel/ChildrenViewButtonPanel";
+import { ISourceBranchProps } from "@logic/entities/Branch/BranchInterfaces";
+import { useRepo } from "@context/RepoContext/RepoContext";
 
 export const ChildrenView = () => {
-	const { repo, currentBranchID } = useMainContext();
+	const { currentBranchID } = useMainContext();
+	const repo = useRepo();
 
-	if (!currentBranchID) {
+	if (!currentBranchID || !repo) {
 		//TODO: add button to create new branch
 		return <EmptyPage />;
 	}
@@ -47,9 +50,14 @@ export const ChildrenView = () => {
 		);
 	};
 
+	const sourceProps: ISourceBranchProps = {
+		branchID: branch.id,
+		connectionType: EBranchConnectionType.PARENT_CHILD,
+	};
+
 	return (
 		<ChildrenViewWrapper>
-			<ChildrenViewButtonPanel />
+			<ChildrenViewButtonPanel sourceProps={sourceProps} />
 			<ChildrenList />
 		</ChildrenViewWrapper>
 	);

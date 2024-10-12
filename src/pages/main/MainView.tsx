@@ -1,10 +1,9 @@
 import { BasicLayout } from "@components/organisms/layouts/BasicLayout/BasicLayout";
-import { useMainContext } from "@context/MainContext/MainContext";
 import { EmptyPage } from "@pages/common/EmptyPage";
+import { useRepo } from "@context/RepoContext/RepoContext";
 
 export const MainView = () => {
-	console.log("component loaded: MainView");
-	const { repo } = useMainContext();
+	const repo = useRepo();
 
 	if (!repo) {
 		return <EmptyPage />;

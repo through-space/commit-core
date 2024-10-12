@@ -58,9 +58,10 @@ export interface IBranchRawObject extends IRawObject {
 export interface IBranchBuilder extends ILogicEntityBuilder {
 	getFromObject: (rawEntity: IBranchRawObject) => IBranch;
 	getEmptyBranch: (repo: IRepo) => IBranch;
+	dumpToRawObject: (branch: IBranch) => IBranchRawObject;
 }
 
 export interface ISourceBranchProps {
-	branchID?: TBranchID | null;
+	branchID?: TBranchID;
 	connectionType?: EBranchConnectionType;
 }

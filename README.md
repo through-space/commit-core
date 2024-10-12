@@ -36,25 +36,27 @@ npm run dev
 ## Roadmap
 
 - [ ] **Navigation**
-	- [ ] Navigation Panel
-	- [ ] Views Switcher
-	- [ ] Back Button and history list to go back
+    - [ ] Navigation Panel
+    - [ ] Views Switcher
+    - [ ] Back Button and history list to go back
 - [ ] **Views**
-	- [ ] Recursive View (branch in branch)
-	- [ ] Size by Contribution Value
+    - [ ] Recursive View (branch in branch)
+    - [ ] Size by Contribution Value
 - [ ] **Logic**
-	- [ ] Create update repo functions (for branches, connections, etc). They should return updated repo.
+    - [ ] Create update repo functions (for branches, connections, etc). They should return updated repo.
 - [ ] **Add Scoring**
-	- [ ] Implement simple commit
+    - [ ] Implement simple commit
 - [ ] **Create Function Diagram**
 - [ ] **Branch Commit**
 - [ ] **Add condition for branch to be committed**
 - [ ] **Branch Priority Function**
 - [ ] **Add Obsidian integration**
-	- [ ] Dump to file
-	- [ ] Read from file
-	- [ ] Write to Daily Notes
+    - [ ] Dump to file
+    - [ ] Read from file
+    - [ ] Write to Daily Notes
 
 ## Bugs
 
 - [ ] **Setting main branch to other branch stops navigation**
+- [ ] **Clean old logic**
+- [ ] **Make connection, branches, etc a map**

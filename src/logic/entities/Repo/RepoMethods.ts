@@ -138,3 +138,20 @@ export const getRepoFromObject: TGetEntityFromObjectFunction<
 	//
 	// return repo;
 };
+
+export const dumpRepoToRawObject = (repo: IRepo): IRepoRawObject => {
+	const branches = repo.branches.map((branch) =>
+		BranchBuilder.dumpToRawObject(branch),
+	);
+	const connections = repo.connections.map((connection) =>
+		ConnectionBuilder.dumpToRawObject(connection),
+	);
+
+	return {
+		id: repo.id,
+		mainBranchID: repo.mainBranchID,
+		branches,
+		connections,
+		commits: [],
+	};
+};

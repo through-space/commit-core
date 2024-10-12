@@ -6,8 +6,7 @@ export const getLocalStorageKey = (repoID: string) => `repo_${repoID}`;
 
 export const LocalStorageProvider: IStorageProvider = {
 	getRepo: async (repoID) => {
-		const localStorageKey = getLocalStorageKey(repoID);
-		const json = localStorage.getItem(localStorageKey);
+		const json = localStorage.getItem(getLocalStorageKey(repoID));
 		if (!json) {
 			return emptyRawRepo;
 		}

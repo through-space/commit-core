@@ -5,6 +5,9 @@ import {
 } from "@logic/entities/Branch/BranchInterfaces";
 import dayjs from "dayjs";
 import { TGetEntityFromObjectFunction } from "@logic/common/LogicEntityInterfaces";
+import { RepoGetters } from "../../../selectors/RepoSelectors";
+import { IRepo } from "@logic/entities/Repo/RepoInterfaces";
+import { emptyBranch } from "@data/templates/emptyBranch";
 
 export const createBranchID = (): TBranchID => {
 	return (
@@ -88,4 +91,24 @@ export const getBranchFromObject: TGetEntityFromObjectFunction<
 	// 	removeConnection,
 	// 	dumpToRawObject,
 	// };
+};
+
+export const getEmptyBranch = (repo: IRepo): IBranch => {
+	let id: TBranchID;
+	do {
+		id = createBranchID();
+	} while (RepoGetters.getBranchByID(repo, id));
+
+	return {
+		...emptyBranch,
+		id,
+	};
+};
+
+export const dumpBranchToRawObject = (branch: IBranch): IBranchRawObject => {
+	return {
+		id: branch.id,
+		name: branch.name,
+		connectionIDs: branch.connectionIDs,
+	};
 };

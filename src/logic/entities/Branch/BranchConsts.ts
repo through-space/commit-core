@@ -1,5 +1,6 @@
 import {
 	createBranchID,
+	dumpBranchToRawObject,
 	getBranchFromObject,
 } from "@logic/entities/Branch/BranchMethods";
 import { IBranchBuilder } from "@logic/entities/Branch/BranchInterfaces";
@@ -10,4 +11,5 @@ export const BranchBuilder: IBranchBuilder = {
 	getEmptyBranch: (repo) => {
 		return { ...emptyBranch, id: createBranchID() };
 	},
+	dumpToRawObject: dumpBranchToRawObject,
 };

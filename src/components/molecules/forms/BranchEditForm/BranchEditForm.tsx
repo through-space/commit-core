@@ -1,21 +1,21 @@
 import { useMainContext } from "@context/MainContext/MainContext";
-import React, { FC, useState } from "react";
+import React, { FC, FormEventHandler, useState } from "react";
 import { IBranchEditFormProps } from "@components/molecules/forms/BranchEditForm/BranchEditFormInterfaces";
 import { RepoGetters } from "selectors/RepoSelectors";
-import { emptyBranch } from "@data/templates/emptyBranch";
 import { IBranch } from "@logic/entities/Branch/BranchInterfaces";
-import { ERepReducerActionTypes } from "../../../../reducers/repo/repoReducerInterfaces";
+import { getEmptyBranch } from "@logic/entities/Branch/BranchMethods";
+import { useRepo } from "@context/RepoContext/RepoContext";
 
 export const BranchEditForm: FC<IBranchEditFormProps> = ({
 	branchID,
-	sourceProps,
 	onSave,
 }) => {
-	const { repo, repoDispatch } = useMainContext();
+	const repo = useRepo();
 	const [branch, setBranch] = useState<IBranch>(
 		branchID
-			? (RepoGetters.getBranchByID(repo, branchID) ?? emptyBranch)
-			: emptyBranch,
+			? (RepoGetters.getBranchByID(repo, branchID) ??
+					getEmptyBranch(repo))
+			: getEmptyBranch(repo),
 	);
 
 	const handleBranchNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,13 +34,13 @@ export const BranchEditForm: FC<IBranchEditFormProps> = ({
 	//TODO: export to another file
 	//TODO: is it possible that there is no parent?
 
-	const handleSave = () => {
-		repoDispatch({ type: ERepReducerActionTypes.SET_BRANCH, branch });
+	const handleSave = (e: React.FormEvent) => {
+		e.preventDefault();
 		onSave && onSave(branch);
 	};
 
 	return (
-		<div>
+		<form onSubmit={handleSave}>
 			<input
 				type="text"
 				value={branch.name}
@@ -48,6 +48,6 @@ export const BranchEditForm: FC<IBranchEditFormProps> = ({
 				autoFocus
 			/>
 			<button onClick={handleSave}>Save</button>
-		</div>
+		</form>
 	);
 };
