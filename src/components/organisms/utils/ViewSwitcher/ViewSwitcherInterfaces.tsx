@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { EViewKeys } from "@components/organisms/views/viewsInterfaces";
+import { EViewKeys } from "../../../../views/viewsInterfaces";
 
 export interface IViewSwitcherViewItem {
 	key: EViewKeys;

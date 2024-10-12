@@ -5,17 +5,13 @@ export const emptyRawRepo: IRepoRawObject = {
 	branches: [],
 	commits: [],
 	connections: [],
+	mainBranchID: "",
 };
 
 export const emptyRepo: IRepo = {
+	branches: [],
+	commits: [],
+	connections: [],
 	id: "empty_repo_1",
-	raw: emptyRawRepo,
 	mainBranchID: "",
-	getBranchByID: () => undefined,
-	getConnectionByID: () => undefined,
-	dumpToRawObject: () => emptyRawRepo,
-	saveConnection: () => {},
-
-	setMainBranchID: () => {},
-	saveBranch: () => {},
 };

@@ -1,10 +1,8 @@
-import {IBranchCompletionScoreCalculationMethod} from "../BranchInterfaces";
-
-
-export const getCompletionRateByPercentage: IBranchCompletionScoreCalculationMethod = () => {
-	console.log(this);
-	return 1;
-}
-
-
-
+// import {IBranchCompletionScoreCalculationMethod} from "../BranchInterfaces";
+//
+//
+// export const getCompletionRateByPercentage: IBranchCompletionScoreCalculationMethod = () => {
+// 	console.log(this);
+// 	return 1;
+// }
+export {};

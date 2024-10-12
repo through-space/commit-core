@@ -1,4 +1,3 @@
-import { IRepo } from "@logic/entities/Repo/RepoInterfaces";
 import { TBranchID } from "@logic/entities/Branch/BranchInterfaces";
 
 export interface IMainContextProps {
@@ -8,6 +7,6 @@ export interface IMainContextProps {
 export interface IMainContext {
 	currentBranchID: TBranchID | null;
 	setCurrentBranchID: (branchID: TBranchID) => void;
-	repo: IRepo;
-	updateRepo: (repo: IRepo) => void;
+	// repo: IRepo;
+	// repoDispatch: Dispatch<TRepoAction>;
 }

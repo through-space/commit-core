@@ -1,10 +1,9 @@
 import * as dayjs from "dayjs";
-import { IBranch, TBranchID } from "@logic/entities/Branch/BranchInterfaces";
+import { TBranchID } from "@logic/entities/Branch/BranchInterfaces";
 import {
 	ILogicEntityBuilder,
-	ILogicEntityBuilderProps,
+	TGetEntityFromObjectFunction,
 } from "@logic/common/LogicEntityInterfaces";
-import { IRepo } from "@logic/entities/Repo/RepoInterfaces";
 
 export type TCommitID = string;
 
@@ -14,7 +13,6 @@ export interface ICommit {
 	timestamp: dayjs.Dayjs;
 	value: number;
 	sourceBranchID: TBranchID;
-	getSourceBranch?: () => IBranch | undefined;
 }
 
 export interface ICommitRawObject {
@@ -26,11 +24,11 @@ export interface ICommitRawObject {
 }
 
 export interface ICommitBuilder extends ILogicEntityBuilder {
-	getEntityFromObject: (props: ICommitBuilderProps) => ICommit;
+	getFromObject: TGetEntityFromObjectFunction<ICommitRawObject, ICommit>;
 }
 
-export interface ICommitBuilderProps extends ILogicEntityBuilderProps {
-	rawObject: ICommitRawObject;
-	repo: IRepo;
-	sourceBranchID: TBranchID;
-}
+// export interface ICommitBuilderProps extends ILogicEntityBuilderProps {
+// 	rawObject: ICommitRawObject;
+// 	repo: IRepo;
+// 	sourceBranchID: TBranchID;
+// }

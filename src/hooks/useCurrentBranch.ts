@@ -1,12 +1,13 @@
-import { useMainContext } from "@context/MainContext";
+import { useMainContext } from "@context/MainContext/MainContext";
 import { IBranch } from "@logic/entities/Branch/BranchInterfaces";
+import { RepoGetters } from "selectors/RepoSelectors";
 
-export const useCurrentBranch = (): IBranch | undefined => {
+export const useCurrentBranch = (): IBranch | null => {
 	const { currentBranchID, repo } = useMainContext();
 
 	if (!currentBranchID) {
-		return;
+		return null;
 	}
 
-	return repo.getBranchByID(currentBranchID);
+	return RepoGetters.getBranchByID(repo, currentBranchID);
 };

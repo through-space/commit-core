@@ -8,10 +8,10 @@ import {
 } from "@components/organisms/layouts/BasicLayout/BasicLayoutStyledComponents";
 import { ViewSwitcher } from "@components/organisms/utils/ViewSwitcher/ViewSwitcher";
 import { CliPanel } from "@components/molecules/cards/CliPanel/CliPanel";
-import { TasksView } from "@components/organisms/views/TasksView/TasksView";
-import { CalendarView } from "@components/organisms/views/CalendarView/CalendarView";
-import { ChildrenView } from "@components/organisms/views/ChildrenView/ChildrenView";
-import { EViewKeys } from "@components/organisms/views/viewsInterfaces";
+import { TasksView } from "../../../../views/TasksView/TasksView";
+import { CalendarView } from "../../../../views/CalendarView/CalendarView";
+import { ChildrenView } from "../../../../views/ChildrenView/ChildrenView";
+import { EViewKeys } from "../../../../views/viewsInterfaces";
 
 // TODO: This component must have all logic of default and component switcher
 // TODO: Maybe navigation is here?

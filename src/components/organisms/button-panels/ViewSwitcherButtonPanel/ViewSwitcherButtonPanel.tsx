@@ -1,4 +1,4 @@
-import { IViewSwitcherButtonPanelProps } from "@components/molecules/button-panels/ViewSwitcherButtonPanel/ViewSwitcherButtonPanelInterfaces";
+import { IViewSwitcherButtonPanelProps } from "@components/organisms/button-panels/ViewSwitcherButtonPanel/ViewSwitcherButtonPanelInterfaces";
 import { SwitchViewButton } from "@components/atoms/buttons/SwitchViewButton/SwitchViewButton";
 import { ESwitchViewButtonDirection } from "@components/atoms/buttons/SwitchViewButton/SwitchViewButtonInterfaces";
 

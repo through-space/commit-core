@@ -1,6 +1,6 @@
 import { IViewSwitcherProps } from "@components/organisms/utils/ViewSwitcher/ViewSwitcherInterfaces";
 import React, { FC, useEffect, useState } from "react";
-import { ViewSwitcherButtonPanel } from "@components/molecules/button-panels/ViewSwitcherButtonPanel/ViewSwitcherButtonPanel";
+import { ViewSwitcherButtonPanel } from "@components/organisms/button-panels/ViewSwitcherButtonPanel/ViewSwitcherButtonPanel";
 import { ViewSwitcherViewWrapper } from "@components/organisms/utils/ViewSwitcher/ViewStyledComponents";
 
 //TODO: maybe use https://www.npmjs.com/package/react-swipe only for mobile
