@@ -5,10 +5,7 @@ import {
 	IFetchRepoProps,
 	ILoadRepoProps,
 } from "@context/RepoContext/RepoContextInterfaces";
-import { useStorage } from "@hooks/useStorage";
 import { IRepoRawObject } from "@logic/entities/Repo/RepoInterfaces";
-import { useMainContext } from "@context/MainContext/MainContext";
-import { useRepoDispatch } from "@context/RepoContext/RepoContext";
 
 export const fetchRepo = async (props: IFetchRepoProps) => {
 	const { storageProvider, onResolve, onReject } = props;
@@ -23,7 +20,12 @@ export const fetchRepo = async (props: IFetchRepoProps) => {
 };
 
 export const loadRepo = async (props: ILoadRepoProps) => {
-	const { storageProvider, dispatchRepo, setCurrentBranchID } = props;
+	const {
+		storageProvider,
+		dispatchRepo,
+		setCurrentBranchID,
+		setCurrentRepoID,
+	} = props;
 	const onResolve = (repoRawObject: IRepoRawObject) => {
 		const fetchedRepo = RepoBuilder.getFromRawObject(repoRawObject);
 
@@ -31,6 +33,8 @@ export const loadRepo = async (props: ILoadRepoProps) => {
 			type: ERepReducerActionTypes.SET_REPO,
 			repo: fetchedRepo,
 		});
+
+		setCurrentRepoID(fetchedRepo.id);
 
 		if (fetchedRepo.mainBranchID) {
 			setCurrentBranchID(fetchedRepo.mainBranchID);
