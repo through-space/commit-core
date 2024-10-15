@@ -1,11 +1,14 @@
 import { createContext, FC, useContext, useMemo, useState } from "react";
 import { IMainContext, IMainContextProps } from "./MainContextTypes";
-import { DEFAULT_MAIN_BRANCH_ID } from "@config/commonConsts";
+import { DEFAULT_MAIN_BRANCH_ID, DEFAULT_REPO_ID } from "@config/commonConsts";
 import { TBranchID } from "@logic/entities/Branch/BranchInterfaces";
+import { TRepoID } from "@logic/entities/Repo/RepoInterfaces";
 
 const MainContext = createContext<IMainContext>({
 	currentBranchID: DEFAULT_MAIN_BRANCH_ID,
 	setCurrentBranchID: () => {},
+	currentRepoID: null,
+	setCurrentRepoID: () => {},
 	// repo: emptyRepo,
 	// repoDispatch: () => {},
 });
@@ -19,10 +22,17 @@ export const MainContextProvider: FC<IMainContextProps> = ({ children }) => {
 		null,
 	);
 
+	const [currentRepoID, setCurrentRepoID] = useState<TRepoID | null>(
+		DEFAULT_REPO_ID,
+	);
+
 	const context = useMemo(() => {
 		return {
 			currentBranchID,
 			setCurrentBranchID,
+
+			currentRepoID,
+			setCurrentRepoID,
 		};
 	}, [currentBranchID]);
 

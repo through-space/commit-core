@@ -11,6 +11,7 @@ import { EmptyPage } from "@pages/common/EmptyPage";
 import { useCurrentBranch } from "@hooks/useCurrentBranch";
 import { HomeButton } from "@components/atoms/buttons/HomeButton/HomeButton";
 import { ChildrenViewButtonPanel } from "@components/organisms/button-panels/ChildrenViewButtonPanel/ChildrenViewButtonPanel";
+import { DownloadRepoButton } from "@components/molecules/buttons/DownloadRepoButton/DownloadRepoButton";
 
 export const CalendarView: FC = () => {
 	const branch = useCurrentBranch();
@@ -38,6 +39,7 @@ export const CalendarView: FC = () => {
 			<CalendarViewTopComponentWrapper>
 				<div>
 					<HomeButton />
+					<DownloadRepoButton />
 				</div>
 				<div>{branch.name}</div>
 			</CalendarViewTopComponentWrapper>

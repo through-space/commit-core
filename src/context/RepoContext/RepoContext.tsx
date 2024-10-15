@@ -9,16 +9,10 @@ import {
 import { IRepo } from "@logic/entities/Repo/RepoInterfaces";
 import { repoReducer } from "../../reducers/repo/repoReducer";
 import { emptyRepo } from "@data/templates/emptyRepo";
-import {
-	ERepReducerActionTypes,
-	TRepoAction,
-} from "../../reducers/repo/repoReducerInterfaces";
-import { RepoBuilder } from "@logic/entities/Repo/RepoConsts";
-import { DEFAULT_REPO_ID } from "@config/commonConsts";
+import { TRepoAction } from "../../reducers/repo/repoReducerInterfaces";
 import { useStorage } from "@hooks/useStorage";
 import { useMainContext } from "@context/MainContext/MainContext";
-import { IStorageProvider } from "@services/StorageProvider/StorageProviderInterfaces";
-import { fetchRepo, loadRepo } from "@context/RepoContext/RepoContextConsts";
+import { loadRepo } from "@context/RepoContext/RepoContextConsts";
 
 export const RepoContext = createContext<IRepo>(emptyRepo);
 export const RepoDispatchContext = createContext<React.Dispatch<TRepoAction>>(
@@ -33,18 +27,21 @@ export const RepoProvider = ({ children }: IRepoProviderProps) => {
 	const [isInitialized, setIsInitialized] = useState(false);
 	const [repo, dispatchRepo] = useReducer(repoReducer, emptyRepo);
 	const storageProvider = useStorage();
-	const { setCurrentBranchID } = useMainContext();
+	const { setCurrentBranchID, setCurrentRepoID } = useMainContext();
 
 	const saveRepo = async (repo: IRepo) => {
 		storageProvider.saveRepo(repo);
 	};
 
 	useEffect(() => {
-		loadRepo({ storageProvider, dispatchRepo, setCurrentBranchID }).then(
-			() => {
-				setIsInitialized(true);
-			},
-		);
+		loadRepo({
+			storageProvider,
+			dispatchRepo,
+			setCurrentBranchID,
+			setCurrentRepoID,
+		}).then(() => {
+			setIsInitialized(true);
+		});
 	}, []);
 
 	useEffect(() => {
