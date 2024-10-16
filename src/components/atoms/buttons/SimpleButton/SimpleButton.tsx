@@ -6,8 +6,13 @@ export const SimpleButton: FC<ISimpleButtonProps> = ({
 	children,
 	isDisabled = false,
 }) => {
+	const handleClick = (e: React.MouseEvent) => {
+		e.stopPropagation();
+		onClick();
+	};
+
 	return (
-		<button onClick={onClick} disabled={isDisabled}>
+		<button onClick={handleClick} disabled={isDisabled}>
 			{children}
 		</button>
 	);

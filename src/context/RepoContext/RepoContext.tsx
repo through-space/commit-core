@@ -7,9 +7,9 @@ import {
 	useState,
 } from "react";
 import { IRepo } from "@logic/entities/Repo/RepoInterfaces";
-import { repoReducer } from "../../reducers/repo/repoReducer";
+import { repoReducer } from "@reducers/repo/repoReducer";
 import { emptyRepo } from "@data/templates/emptyRepo";
-import { TRepoAction } from "../../reducers/repo/repoReducerInterfaces";
+import { TRepoAction } from "@reducers/repo/repoReducerInterfaces";
 import { useStorage } from "@hooks/useStorage";
 import { useMainContext } from "@context/MainContext/MainContext";
 import { loadRepo } from "@context/RepoContext/RepoContextConsts";

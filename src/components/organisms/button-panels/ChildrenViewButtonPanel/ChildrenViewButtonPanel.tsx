@@ -23,6 +23,7 @@ export const ChildrenViewButtonPanel: FC<IChildrenViewButtonPanelProps> = ({
 		setIsOpen(false);
 	};
 
+	//TODO: maybe move to BranchEditForm?
 	const handleSaveBranch = (branch: IBranch) => {
 		saveChildBranch(branch, repoDispatch, currentBranchID, sourceProps);
 		setIsOpen(false);

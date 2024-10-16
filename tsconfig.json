@@ -1,57 +1,60 @@
 {
-	"compilerOptions": {
-		"baseUrl": "./src",
-		"paths": {
-			"@context/*": [
-				"context/*"
-			],
-			"@components/*": [
-				"components/*"
-			],
-			"@data/*": [
-				"data/*"
-			],
-			"@logic/*": [
-				"logic/*"
-			],
-			"@services/*": [
-				"services/*"
-			],
-			"@config/*": [
-				"config/*"
-			],
-			"@pages/*": [
-				"pages/*"
-			],
-			"@styles/*": [
-				"styles/*"
-			],
-			"@hooks/*": [
-				"hooks/*"
-			]
-		},
-		"inlineSourceMap": true,
-		"inlineSources": true,
-		"module": "ESNext",
-		"target": "ES6",
-		"allowJs": true,
-		"noImplicitAny": true,
-		"moduleResolution": "node",
-		"importHelpers": true,
-		"isolatedModules": true,
-		"jsx": "react-jsx",
-		"strictNullChecks": true,
-		"lib": [
-			"DOM",
-			"ES5",
-			"ES6",
-			"ES7"
-		],
-		"allowSyntheticDefaultImports": true
-	},
-	"include": [
-		"**/*.ts",
-		"**/*.tsx",
-		"src"
-	]
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@context/*": [
+        "context/*"
+      ],
+      "@components/*": [
+        "components/*"
+      ],
+      "@data/*": [
+        "data/*"
+      ],
+      "@logic/*": [
+        "logic/*"
+      ],
+      "@services/*": [
+        "services/*"
+      ],
+      "@config/*": [
+        "config/*"
+      ],
+      "@pages/*": [
+        "pages/*"
+      ],
+      "@reducers/*": [
+        "reducers/*"
+      ],
+      "@styles/*": [
+        "styles/*"
+      ],
+      "@hooks/*": [
+        "hooks/*"
+      ]
+    },
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "module": "ESNext",
+    "target": "ES6",
+    "allowJs": true,
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "strictNullChecks": true,
+    "lib": [
+      "DOM",
+      "ES5",
+      "ES6",
+      "ES7"
+    ],
+    "allowSyntheticDefaultImports": true
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "src"
+  ]
 }

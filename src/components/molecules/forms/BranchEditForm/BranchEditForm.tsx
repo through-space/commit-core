@@ -1,5 +1,4 @@
-import { useMainContext } from "@context/MainContext/MainContext";
-import React, { FC, FormEventHandler, useState } from "react";
+import React, { FC, useState } from "react";
 import { IBranchEditFormProps } from "@components/molecules/forms/BranchEditForm/BranchEditFormInterfaces";
 import { RepoGetters } from "selectors/RepoSelectors";
 import { IBranch } from "@logic/entities/Branch/BranchInterfaces";
