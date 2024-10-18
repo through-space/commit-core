@@ -55,9 +55,14 @@ npm run dev
     - [ ] Read from file
     - [ ] Write to Daily Notes
 - [ ] Show separately (or cleanup) branches that are not connected to anything
+- [ ] **Approve branch removal when has connections to children or other entities**
+    - [ ] Which type of connections is important?
+    - [ ] Keep list fo branches that are not connected
+    - [ ] Add Dialog for removal
 
 ## Bugs
 
 - [x] **Setting main branch to other branch stops navigation**
 - [ ] **Clean old logic**
 - [ ] **Make connection, branches, etc a map?**
+- [ ] **Is cleanup needed for connections for branches that don't exist?**
