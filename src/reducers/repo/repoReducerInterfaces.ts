@@ -11,6 +11,7 @@ export enum ERepReducerActionTypes {
 	SET_MAIN_BRANCH = "SET_MAIN_BRANCH",
 	SET_CONNECTION = "SET_CONNECTION",
 	SET_BRANCH_CONNECTION = "SET_BRANCH_CONNECTION",
+	REMOVE_BRANCH = "REMOVE_BRANCH",
 }
 
 export interface ISetRepoAction {
@@ -39,9 +40,15 @@ export interface ISetBranchConnectionAction {
 	connectionID: TBranchConnectionID;
 }
 
+export interface IRemoveBranchAction {
+	type: ERepReducerActionTypes.REMOVE_BRANCH;
+	branchID: TBranchID;
+}
+
 export type TRepoAction =
 	| ISetRepoAction
 	| ISetBranchAction
 	| ISetMainBranchAction
 	| ISetConnectionAction
-	| ISetBranchConnectionAction;
+	| ISetBranchConnectionAction
+	| IRemoveBranchAction;

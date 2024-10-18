@@ -31,6 +31,9 @@
       ],
       "@hooks/*": [
         "hooks/*"
+      ],
+      "@selectors/*": [
+        "selectors/*"
       ]
     },
     "inlineSourceMap": true,

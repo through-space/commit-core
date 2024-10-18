@@ -53,3 +53,10 @@ export const setBranchConnection = (
 		),
 	};
 };
+
+export const removeBranch = (state: IRepo, branchID: TBranchID): IRepo => {
+	return {
+		...state,
+		branches: state.branches.filter((b) => b.id !== branchID),
+	};
+};
