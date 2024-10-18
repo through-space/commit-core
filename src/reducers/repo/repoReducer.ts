@@ -1,6 +1,7 @@
 import { IRepo } from "@logic/entities/Repo/RepoInterfaces";
 import { ERepReducerActionTypes, TRepoAction } from "./repoReducerInterfaces";
 import {
+	removeBranch,
 	setBranch,
 	setBranchConnection,
 	setConnection,
@@ -24,6 +25,8 @@ export const repoReducer = (state: IRepo, action: TRepoAction) => {
 			);
 		case ERepReducerActionTypes.SET_MAIN_BRANCH:
 			return setMainBranch(state, action.branchID);
+		case ERepReducerActionTypes.REMOVE_BRANCH:
+			return removeBranch(state, action.branchID);
 		default:
 			return state;
 	}

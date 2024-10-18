@@ -13,9 +13,14 @@ export const Modal = (props: IModalProps) => {
 		return null;
 	}
 
+	const handleOnClose = (e: React.MouseEvent<HTMLDivElement>) => {
+		e.stopPropagation();
+		onClose && onClose();
+	};
+
 	const ModalPopup = () => {
 		return (
-			<Overlay onClick={onClose}>
+			<Overlay onClick={handleOnClose}>
 				<ModalWrapper
 					onClick={(e: React.MouseEvent<HTMLDivElement>) =>
 						e.stopPropagation()

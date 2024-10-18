@@ -37,13 +37,13 @@ npm run dev
 
 - [ ] **Navigation**
     - [ ] Navigation Panel
-    - [ ] Views Switcher
+    - [x] Views Switcher
     - [ ] Back Button and history list to go back
 - [ ] **Views**
     - [ ] Recursive View (branch in branch)
     - [ ] Size by Contribution Value
-- [ ] **Logic**
-    - [ ] Create update repo functions (for branches, connections, etc). They should return updated repo.
+- [x] **Logic**
+    - [x] Create update repo functions (for branches, connections, etc). They should return updated repo.
 - [ ] **Add Scoring**
     - [ ] Implement simple commit
 - [ ] **Create Function Diagram**
@@ -54,9 +54,15 @@ npm run dev
     - [ ] Dump to file
     - [ ] Read from file
     - [ ] Write to Daily Notes
+- [ ] Show separately (or cleanup) branches that are not connected to anything
+- [ ] **Approve branch removal when has connections to children or other entities**
+    - [ ] Which type of connections is important?
+    - [ ] Keep list fo branches that are not connected
+    - [ ] Add Dialog for removal
 
 ## Bugs
 
-- [ ] **Setting main branch to other branch stops navigation**
+- [x] **Setting main branch to other branch stops navigation**
 - [ ] **Clean old logic**
-- [ ] **Make connection, branches, etc a map**
+- [ ] **Make connection, branches, etc a map?**
+- [ ] **Is cleanup needed for connections for branches that don't exist?**

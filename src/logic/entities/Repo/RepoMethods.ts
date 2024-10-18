@@ -8,7 +8,7 @@ import {
 	IBranchConnection,
 	IBranchConnectionRawObject,
 } from "@logic/entities/Connection/ConnectionInterfaces";
-import { BranchBuilder } from "@logic/entities/Branch/BranchConsts";
+import { BranchBuilder } from "@logic/entities/Branch/BranchBuilder";
 import { ConnectionBuilder } from "@logic/entities/Connection/ConnnectionBuilderConsts";
 import { TGetEntityFromObjectFunction } from "@logic/common/LogicEntityInterfaces";
 import {
