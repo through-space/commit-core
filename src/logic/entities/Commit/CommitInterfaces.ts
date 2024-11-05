@@ -11,7 +11,7 @@ export interface ICommit {
 	id: TCommitID;
 	message: string;
 	timestamp: dayjs.Dayjs;
-	value: number;
+	value?: number;
 	sourceBranchID: TBranchID;
 }
 
@@ -26,9 +26,3 @@ export interface ICommitRawObject {
 export interface ICommitBuilder extends ILogicEntityBuilder {
 	getFromObject: TGetEntityFromObjectFunction<ICommitRawObject, ICommit>;
 }
-
-// export interface ICommitBuilderProps extends ILogicEntityBuilderProps {
-// 	rawObject: ICommitRawObject;
-// 	repo: IRepo;
-// 	sourceBranchID: TBranchID;
-// }
