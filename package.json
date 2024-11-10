@@ -4,6 +4,7 @@
 	"description": "",
 	"main": "index.ts",
 	"scripts": {
+		"prebuild": "mkdir -p dist && cp public/index.html dist/index.html",
 		"dev_back": "esbuild index.tsx --bundle --sourcemap --outfile=dist/index.js --watch --target=chrome58",
 		"dev": "node esbuild.config.mjs & open dist/index.html",
 		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
