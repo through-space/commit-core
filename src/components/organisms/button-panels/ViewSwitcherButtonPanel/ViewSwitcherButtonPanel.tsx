@@ -12,7 +12,7 @@ export const ViewSwitcherButtonPanel = (
 	}
 
 	const switchIndex = (step: number) => {
-		const newIndex = (currentIndex + step) % childrenLength;
+		const newIndex = Math.abs((currentIndex + step) % childrenLength);
 		setCurrentIndex(newIndex);
 	};
 
