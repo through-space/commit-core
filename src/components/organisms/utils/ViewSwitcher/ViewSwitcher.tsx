@@ -2,6 +2,7 @@ import { IViewSwitcherProps } from "@components/organisms/utils/ViewSwitcher/Vie
 import React, { FC, useEffect, useState } from "react";
 import { ViewSwitcherButtonPanel } from "@components/organisms/button-panels/ViewSwitcherButtonPanel/ViewSwitcherButtonPanel";
 import { ViewSwitcherViewWrapper } from "@components/organisms/utils/ViewSwitcher/ViewStyledComponents";
+import { getViewByIndex } from "@components/organisms/utils/ViewSwitcher/ViewSwitcherConsts";
 
 //TODO: maybe use https://www.npmjs.com/package/react-swipe only for mobile
 
@@ -32,18 +33,18 @@ export const ViewSwitcher: FC<IViewSwitcherProps> = ({
 		initCurrentComponent();
 	}, []);
 
-	const getComponent = () => {
-		const currentView = views[currentComponentIndex];
-		return (
-			<ViewSwitcherViewWrapper key={currentView.key}>
-				{currentView.renderView()}
-			</ViewSwitcherViewWrapper>
-		);
-	};
+	const currentView = getViewByIndex(views, currentComponentIndex);
+
+	if (!currentView) {
+		debugger;
+		return null;
+	}
 
 	return (
 		<>
-			{getComponent()}
+			<ViewSwitcherViewWrapper key={currentView.key}>
+				{ currentView.renderView()}
+			</ViewSwitcherViewWrapper>
 			<ViewSwitcherButtonPanel
 				childrenLength={views.length}
 				currentIndex={currentComponentIndex}
